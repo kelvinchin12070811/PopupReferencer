@@ -1,3 +1,9 @@
+#============================================================================================================
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0.If a copy of the MPL was not distributed with this
+# file, You can obtain one at http ://mozilla.org/MPL/2.0/.
+#============================================================================================================
+
 # use -DQt5_DIR={path to qt5's cmake dir}
 cmake_minimum_required(VERSION 3.0.0)
 project(PopupReferencer LANGUAGES CXX)
@@ -29,7 +35,7 @@ qt5_wrap_ui(ui_wrap ${project_ui})
 qt5_wrap_cpp(moc_sources ${project_headers})
 
 add_executable(PopupReferencer WIN32 ${project_sources} ${project_headers} ${ui_wrap} ${moc_sources})
-
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 target_link_libraries(PopupReferencer
 	Qt5::Core
 	Qt5::Gui
