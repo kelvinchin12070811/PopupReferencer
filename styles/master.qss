@@ -14,14 +14,14 @@ QLineEdit {
 }
 
 QPushButton {
-	background-color: grey;
-	color: white;
+	background-color: lightgrey;
+	color: black;
 	padding: 5px;
 	border: none;
 }
 
 QPushButton:hover {
-	background-color: lightgrey;
+	background-color: grey;
 }
 
 QPushButton:pressed {

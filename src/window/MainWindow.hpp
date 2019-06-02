@@ -24,6 +24,7 @@ namespace window
 		void closeEvent(QCloseEvent* ev) override;
 	private:
 		void browseLocal();
+		void closeAllPopups();
 		void connectWidgets();
 		void popupImage();
 	private:

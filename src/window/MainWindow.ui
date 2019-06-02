@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>524</width>
-    <height>129</height>
+    <width>545</width>
+    <height>128</height>
    </rect>
   </property>
   <property name="font">
@@ -60,18 +60,25 @@
       <item>
        <widget class="QPushButton" name="showInPopupBtn">
         <property name="text">
-         <string>Show in simple viewer</string>
+         <string>Show in simple popup viewer</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="showInAdvancePopup">
         <property name="text">
-         <string>Show in advance viewer</string>
+         <string>Show in advance popup viewer</string>
         </property>
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="closeAllPopupsBtn">
+      <property name="text">
+       <string>Close all popups</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

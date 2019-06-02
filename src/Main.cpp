@@ -4,17 +4,23 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #include <exception>
+#include <fstream>
 #include <qapplication.h>
+#include <qdatetime.h>
+#include <qdir.h>
 #include <qfile.h>
 #include <qmessagebox.h>
 #include "window/MainWindow.hpp"
 
 void loadStyleSheet(QApplication& application)
 {
-	QFile file{ "styles/master.css" };
+	QFile file{ "styles/master.qss" };
 	file.open(QIODevice::ReadOnly);
 	if (!file.isOpen())
-		throw std::runtime_error{ "Unable to load style file" };
+		throw std::runtime_error{
+			"Unable to load style file,pwd:" + QDir::currentPath().toStdString() + ",file:" +
+			file.fileName().toStdString()
+		};
 
 	QString qss{ file.readAll() };
 	application.setStyleSheet(qss);
@@ -33,9 +39,16 @@ int main(int argc, char** argv)
 
 		return app.exec();
 	}
-	catch (const std::exception & e)
+	catch (std::exception& e)
 	{
-		QMessageBox::critical(nullptr, "Exception occured", e.what());
+		std::ofstream log;
+		log.open(".logs", std::ios::ate | std::ios::in | std::ios::out);
+		
+		if (!log.is_open())
+			log.open(".logs", std::ios::out);
+
+		log << "[" << QDateTime::currentDateTime().toString(Qt::ISODate).toStdString() << "] ";
+		log << e.what() << std::endl;
 		return -1;
 	}	
 }

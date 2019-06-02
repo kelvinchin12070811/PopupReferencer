@@ -61,10 +61,21 @@ namespace window
 		
 		ui->urlField->setText(file);
 	}
+
+	void MainWindow::closeAllPopups()
+	{
+		for (auto&& itr : popups)
+		{
+			if (itr != nullptr)
+				itr->closeOnly();
+		}
+		popups.clear();
+	}
 	
 	void MainWindow::connectWidgets()
 	{
 		connect(ui->browseLocalBtn, &QPushButton::clicked, this, &MainWindow::browseLocal);
+		connect(ui->closeAllPopupsBtn, &QPushButton::clicked, this, &MainWindow::closeAllPopups);
 		connect(ui->showInPopupBtn, &QPushButton::clicked, this, &MainWindow::popupImage);
 	}
 
