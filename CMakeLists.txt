@@ -16,18 +16,24 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add project source files here
 set(project_sources
+	src/graphics_scene/SimpleScene.cpp
 	src/Main.cpp
 	src/window/MainWindow.cpp
+	src/window/Popup.cpp
 	)
 
 # add project header files here
 set(project_headers
+	src/graphics_scene/SimpleScene.hpp
+	src/window/BasicPopup.hpp
 	src/window/MainWindow.hpp
+	src/window/Popup.hpp
 	)
 
 # add project ui files here
 set(project_ui
 	src/window/MainWindow.ui
+	src/window/Popup.ui
 	)
 
 # wrap the ui file to a c++ header

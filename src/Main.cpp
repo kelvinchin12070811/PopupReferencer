@@ -9,7 +9,7 @@
 #include <qmessagebox.h>
 #include "window/MainWindow.hpp"
 
-void loadStyleSheet(QWidget& widget)
+void loadStyleSheet(QApplication& application)
 {
 	QFile file{ "styles/master.css" };
 	file.open(QIODevice::ReadOnly);
@@ -17,7 +17,7 @@ void loadStyleSheet(QWidget& widget)
 		throw std::runtime_error{ "Unable to load style file" };
 
 	QString qss{ file.readAll() };
-	widget.setStyleSheet(qss);
+	application.setStyleSheet(qss);
 }
 
 int main(int argc, char** argv)
@@ -25,13 +25,13 @@ int main(int argc, char** argv)
 	try
 	{
 		QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-		QApplication a{ argc, argv };
+		QApplication app{ argc, argv };
+		loadStyleSheet(app);
 
-		window::MainWindow w;
-		loadStyleSheet(w);
-		w.show();
+		auto w = std::make_shared<window::MainWindow>();
+		w->show();
 
-		return a.exec();
+		return app.exec();
 	}
 	catch (const std::exception & e)
 	{
