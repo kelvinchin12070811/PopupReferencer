@@ -1,0 +1,2 @@
+please visit official Qt documentation as bellow for licenses used in Qt
+https://docs.qt.io/qt-5/licenses-used-in-qt.html

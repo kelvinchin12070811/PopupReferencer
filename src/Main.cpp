@@ -9,6 +9,7 @@
 #include <qdatetime.h>
 #include <qdir.h>
 #include <qfile.h>
+#include <qfontdatabase.h>
 #include <qmessagebox.h>
 #include "window/MainWindow.hpp"
 
@@ -32,6 +33,8 @@ int main(int argc, char** argv)
 	{
 		QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 		QApplication app{ argc, argv };
+		int id = QFontDatabase::addApplicationFont("resources/fonts/selawik.ttf");
+		
 		loadStyleSheet(app);
 
 		auto w = std::make_shared<window::MainWindow>();
