@@ -16,10 +16,34 @@ namespace graphics_scene
 
 	void SimpleScene::contextMenuEvent(QGraphicsSceneContextMenuEvent* ev)
 	{
-		QMenu menu{ ev->widget() };
-		auto closeAc = menu.addAction("Close");
+		QPointer<QMenu> menu{ new QMenu(ev->widget()) };
+		auto closeAc = menu->addAction("Close");
 		connect(closeAc, &QAction::triggered, host, &QWidget::close);
 
-		menu.exec(ev->screenPos());
+		menu->exec(ev->screenPos());
+	}
+	
+	void SimpleScene::mousePressEvent(QGraphicsSceneMouseEvent* ev)
+	{
+		if (ev->button() == Qt::LeftButton)
+		{
+			leftButtonDwn = true;
+			cursorOffset = ev->screenPos() - host->pos();
+		}
+	}
+	
+	void SimpleScene::mouseMoveEvent(QGraphicsSceneMouseEvent* ev)
+	{
+		if (leftButtonDwn)
+		{
+			auto nPos = ev->screenPos();
+			host->move(nPos - cursorOffset);
+		}
+	}
+	
+	void SimpleScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* ev)
+	{
+		if (ev->button() == Qt::LeftButton)
+			leftButtonDwn = false;
 	}
 }

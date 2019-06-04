@@ -4,22 +4,23 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #pragma once
-#include <memory>
-#include <qdialog.h>
 #include <qgraphicsitem.h>
+#include <qgraphicsscene.h>
+#include <qgraphicsview.h>
 #include <qpixmap.h>
-#include <qpointer.h>
+#include "Popup.hpp"
 
 namespace window
 {
-	class BasicPopup : public QDialog
+	class MainWindow;
+	class AdvPopup : public Popup
 	{
 		Q_OBJECT
 	public:
-		virtual void show() = 0;
-		virtual void closeOnly() = 0;
-		virtual ~BasicPopup() = default;
+		AdvPopup(const QString& url, std::weak_ptr<MainWindow> mainWindow);
+		QGraphicsScene* sceneCreatorFunc();
+		void show() override;
 	protected:
-		std::shared_ptr<BasicPopup> delayDeletor;
+		void resizeEvent(QResizeEvent* ev) override;
 	};
 }

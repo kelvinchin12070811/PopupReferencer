@@ -7,22 +7,15 @@
 #include <qdialog.h>
 #include <qgraphicsscene.h>
 #include <qpointer.h>
+#include "SimpleScene.hpp"
 
 namespace graphics_scene
 {
-	class SimpleScene : public QGraphicsScene
+	class AdvanceScene : public SimpleScene
 	{
 	public:
-		SimpleScene(QDialog* host, QObject* parent = nullptr);
-
+		AdvanceScene(QDialog* host, QObject* parent = nullptr);
 	protected:
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent* ev) override;
-		void mousePressEvent(QGraphicsSceneMouseEvent* ev) override;
-		void mouseMoveEvent(QGraphicsSceneMouseEvent* ev) override;
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent* ev) override;
-	protected:
-		bool leftButtonDwn{ false };
-		QPoint cursorOffset;
-		QPointer<QDialog> host;
 	};
 }

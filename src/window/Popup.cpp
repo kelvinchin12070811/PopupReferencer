@@ -11,24 +11,33 @@
 
 namespace window
 {
-	Popup::Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow, QWidget* parent):
+	Popup::Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow,
+		std::function<QGraphicsScene*()> sceneCreator, QWidget* parent):
 		image(QPixmap{ url }), mainWindow(mainWindow)
 	{
 		this->setParent(parent);
 		ui = std::make_unique<decltype(ui)::element_type>();
 		ui->setupUi(this);
 		this->setSizeGripEnabled(true);
+
 		QFileInfo info{ url };
 		this->setWindowTitle(info.fileName());
 		this->setWindowIcon(QIcon{ image });
 
 		this->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
 		this->setAttribute(Qt::WA_DeleteOnClose);
-		scene = ui->graphicsView->scene();
 
 		// assign image
-		scene = new graphics_scene::SimpleScene(this, ui->graphicsView);
+		if (sceneCreator == nullptr)
+		{
+			scene = new graphics_scene::SimpleScene(this, ui->graphicsView);
+		}
+		else
+		{
+			scene = sceneCreator();
+		}
 		ui->graphicsView->setScene(scene);
+		ui->graphicsView->installEventFilter(this);
 		graphicsItm = scene->addPixmap(image);
 	}
 
@@ -36,6 +45,11 @@ namespace window
 	{
 		_closeOnly = true;
 		close();
+	}
+
+	bool Popup::eventFilter(QObject* object, QEvent* ev)
+	{
+		return QDialog::eventFilter(object, ev);
 	}
 
 	void Popup::show()

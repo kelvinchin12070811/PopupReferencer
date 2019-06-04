@@ -27,6 +27,7 @@ namespace window
 		void closeAllPopups();
 		void connectWidgets();
 		void popupImage();
+		void popupImageEx();
 	private:
 		std::unique_ptr<Ui::MainWindow> ui;
 		std::set<QPointer<BasicPopup>> popups;

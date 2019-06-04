@@ -16,15 +16,19 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add project source files here
 set(project_sources
+	src/graphics_scene/AdvanceScene.cpp
 	src/graphics_scene/SimpleScene.cpp
 	src/Main.cpp
+	src/window/AdvPopup.cpp
 	src/window/MainWindow.cpp
 	src/window/Popup.cpp
 	)
 
 # add project header files here
 set(project_headers
+	src/graphics_scene/AdvanceScene.hpp
 	src/graphics_scene/SimpleScene.hpp
+	src/window/AdvPopup.hpp
 	src/window/BasicPopup.hpp
 	src/window/MainWindow.hpp
 	src/window/Popup.hpp

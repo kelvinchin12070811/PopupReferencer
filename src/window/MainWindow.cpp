@@ -5,8 +5,8 @@
 //===========================================================================================================
 #include <qstandardpaths.h>
 #include <qfiledialog.h>
+#include "AdvPopup.hpp"
 #include "MainWindow.hpp"
-#include "Popup.hpp"
 
 namespace window
 {
@@ -76,17 +76,29 @@ namespace window
 	{
 		connect(ui->browseLocalBtn, &QPushButton::clicked, this, &MainWindow::browseLocal);
 		connect(ui->closeAllPopupsBtn, &QPushButton::clicked, this, &MainWindow::closeAllPopups);
+		connect(ui->showInAdvancePopup, &QPushButton::clicked, this, &MainWindow::popupImageEx);
 		connect(ui->showInPopupBtn, &QPushButton::clicked, this, &MainWindow::popupImage);
 	}
 
 	void MainWindow::popupImage()
 	{
-		QString url = ui->urlField->text();
+		QString url{ ui->urlField->text() };
 		if (url.isEmpty()) return;
 
 		auto popup = new Popup(url, this->shared_from_this());
 		popup->show();
 		
+		popups.insert(popup);
+	}
+	
+	void MainWindow::popupImageEx()
+	{
+		QString url{ ui->urlField->text() };
+		if (url.isEmpty()) return;
+
+		auto popup = new AdvPopup(url, this->shared_from_this());
+
+		popup->show();
 		popups.insert(popup);
 	}
 }

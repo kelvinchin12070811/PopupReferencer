@@ -43,14 +43,20 @@
      <property name="mouseTracking">
       <bool>false</bool>
      </property>
+     <property name="tabletTracking">
+      <bool>false</bool>
+     </property>
      <property name="acceptDrops">
       <bool>false</bool>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="interactive">
+      <bool>true</bool>
      </property>
      <property name="renderHints">
       <set>QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>

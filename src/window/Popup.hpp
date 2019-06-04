@@ -4,9 +4,10 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #pragma once
-#include "ui_Popup.h"
+#include <functional>
 #include "BasicPopup.hpp"
 #include "../graphics_scene/SimpleScene.hpp"
+#include "ui_Popup.h"
 
 namespace window
 {
@@ -15,16 +16,18 @@ namespace window
 	{
 		Q_OBJECT
 	public:
-		Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow, QWidget* parent = nullptr);
+		Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow ,
+			std::function<QGraphicsScene*()> sceneCreator = nullptr, QWidget* parent = nullptr);
 		void closeOnly() override;
-		void show();
+		bool eventFilter(QObject* object, QEvent* ev) override;
+		virtual void show();
 	protected:
 		void closeEvent(QCloseEvent* ev) override;
 		void mousePressEvent(QMouseEvent* ev) override;
 		void mouseMoveEvent(QMouseEvent* ev) override;
 		void mouseReleaseEvent(QMouseEvent* ev) override;
 		void resizeEvent(QResizeEvent* ev) override;
-	private:
+	protected:
 		bool _closeOnly{ false };
 		bool leftButtonDwn{ false };
 		QPoint cursorOffset;
