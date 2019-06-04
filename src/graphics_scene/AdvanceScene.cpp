@@ -6,6 +6,7 @@
 #include <qaction.h>
 #include <qgraphicssceneevent.h>
 #include <qmenu.h>
+#include <qscrollbar.h>
 #include "AdvanceScene.hpp"
 #include "../window/AdvPopup.hpp"
 
@@ -43,5 +44,50 @@ namespace graphics_scene
 		connect(acClose, &QAction::triggered, this->host, &QDialog::close);
 
 		menu->exec(ev->screenPos());
+	}
+
+	void AdvanceScene::mousePressEvent(QGraphicsSceneMouseEvent* ev)
+	{
+		SimpleScene::mousePressEvent(ev);
+
+		if (ev->button() == Qt::MouseButton::MiddleButton)
+		{
+			host->setCursor(Qt::CursorShape::ClosedHandCursor);
+			midButtonDown = true;
+			musLastPos = ev->scenePos();
+		}
+	}
+
+	void AdvanceScene::mouseMoveEvent(QGraphicsSceneMouseEvent* ev)
+	{
+		SimpleScene::mouseMoveEvent(ev);
+		if (midButtonDown)
+		{
+			auto parent = static_cast<QGraphicsView*>(this->parent());
+			
+			auto musCurPos = ev->scenePos();
+
+			auto hScrollBar = parent->horizontalScrollBar();
+			auto vScrollBar = parent->verticalScrollBar();
+
+			hScrollBar->setValue(hScrollBar->value() - static_cast<int>(musCurPos.x() - musLastPos.x()));
+			vScrollBar->setValue(vScrollBar->value() - static_cast<int>(musCurPos.y() - musLastPos.y()));
+
+			musLastPos = musCurPos;
+			ev->accept();
+			return;
+		}
+	}
+
+	void AdvanceScene::mouseReleaseEvent(QGraphicsSceneMouseEvent * ev)
+	{
+		SimpleScene::mouseReleaseEvent(ev);
+
+		if (ev->button() == Qt::MouseButton::MiddleButton)
+		{
+			if (host->cursor() == Qt::CursorShape::ClosedHandCursor)
+				host->setCursor(Qt::CursorShape::ArrowCursor);
+			midButtonDown = false;
+		}
 	}
 }

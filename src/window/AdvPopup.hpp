@@ -20,6 +20,7 @@ namespace window
 		AdvPopup(const QString& url, std::weak_ptr<MainWindow> mainWindow);
 		QGraphicsScene* sceneCreatorFunc();
 		void show() override;
+
 	protected:
 		void resizeEvent(QResizeEvent* ev) override;
 	};

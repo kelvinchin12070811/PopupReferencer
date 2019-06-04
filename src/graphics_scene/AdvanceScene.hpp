@@ -17,5 +17,12 @@ namespace graphics_scene
 		AdvanceScene(QDialog* host, QObject* parent = nullptr);
 	protected:
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent* ev) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent* ev) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent* ev) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent* ev) override;
+
+	private:
+		bool midButtonDown{ false };
+		QPointF musLastPos;
 	};
 }
