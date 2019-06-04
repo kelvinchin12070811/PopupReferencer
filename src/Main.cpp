@@ -33,7 +33,6 @@ int main(int argc, char** argv)
 	{
 		QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 		QApplication app{ argc, argv };
-		int id = QFontDatabase::addApplicationFont("resources/fonts/selawik.ttf");
 		
 		loadStyleSheet(app);
 
