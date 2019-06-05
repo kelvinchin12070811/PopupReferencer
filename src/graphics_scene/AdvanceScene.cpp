@@ -73,7 +73,6 @@ namespace graphics_scene
 			hScrollBar->setValue(hScrollBar->value() - static_cast<int>(musCurPos.x() - musLastPos.x()));
 			vScrollBar->setValue(vScrollBar->value() - static_cast<int>(musCurPos.y() - musLastPos.y()));
 
-			musLastPos = musCurPos;
 			ev->accept();
 			return;
 		}
