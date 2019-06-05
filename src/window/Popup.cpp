@@ -57,6 +57,12 @@ namespace window
 		QDialog::show();
 		this->resize(image.size() + QSize{ 6, 6 });
 	}
+
+	void Popup::fitInView()
+	{
+		auto rect = graphicsItm->boundingRect();
+		ui->graphicsView->fitInView(rect, Qt::KeepAspectRatio);
+	}
 	
 	void Popup::closeEvent(QCloseEvent* ev)
 	{
@@ -94,8 +100,7 @@ namespace window
 
 	void Popup::resizeEvent(QResizeEvent* ev)
 	{
-		auto rect = graphicsItm->boundingRect();
-		ui->graphicsView->fitInView(rect, Qt::KeepAspectRatio);
+		fitInView();
 		QDialog::resizeEvent(ev);
 	}
 }

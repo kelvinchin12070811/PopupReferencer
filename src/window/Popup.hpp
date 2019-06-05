@@ -21,12 +21,15 @@ namespace window
 		void closeOnly() override;
 		bool eventFilter(QObject* object, QEvent* ev) override;
 		virtual void show();
+		void fitInView();
+
 	protected:
 		void closeEvent(QCloseEvent* ev) override;
 		void mousePressEvent(QMouseEvent* ev) override;
 		void mouseMoveEvent(QMouseEvent* ev) override;
 		void mouseReleaseEvent(QMouseEvent* ev) override;
 		void resizeEvent(QResizeEvent* ev) override;
+
 	protected:
 		bool _closeOnly{ false };
 		bool leftButtonDwn{ false };

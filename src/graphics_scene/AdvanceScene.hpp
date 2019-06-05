@@ -6,6 +6,7 @@
 #pragma once
 #include <qdialog.h>
 #include <qgraphicsscene.h>
+#include <qgraphicsview.h>
 #include <qpointer.h>
 #include "SimpleScene.hpp"
 
@@ -15,6 +16,7 @@ namespace graphics_scene
 	{
 	public:
 		AdvanceScene(QDialog* host, QObject* parent = nullptr);
+
 	protected:
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent* ev) override;
 		void mousePressEvent(QGraphicsSceneMouseEvent* ev) override;
@@ -22,7 +24,21 @@ namespace graphics_scene
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent* ev) override;
 
 	private:
+		void rotate(qreal rotation);
+		void resetRotate();
+		void zoom(qreal delta);
+		void resetZoom();
+		void hFlip();
+		void vFlip();
+		void resetFlip();
+		void resetAll();
+
+	private:
 		bool midButtonDown{ false };
+		bool isHFlip{ false };
+		bool isVFlip{ false };
+		qreal rotation{ 0 };
 		QPointF musLastPos;
+		QGraphicsView* view{ nullptr };
 	};
 }

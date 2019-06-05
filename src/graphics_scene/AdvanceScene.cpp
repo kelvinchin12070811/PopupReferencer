@@ -15,31 +15,65 @@ namespace graphics_scene
 	AdvanceScene::AdvanceScene(QDialog* host, QObject* parent) :
 		SimpleScene(host, parent)
 	{
+		view = static_cast<QGraphicsView*>(parent);
 	}
 
 	void AdvanceScene::contextMenuEvent(QGraphicsSceneContextMenuEvent* ev)
 	{
 		QPointer<QMenu> menu{ new QMenu(ev->widget()) };
 
+		//Zoom menu
 		auto menuZoom = menu->addMenu("Zoom");
 		auto acZoomIn = menuZoom->addAction("Zoom in");
 		auto acZoomOut = menuZoom->addAction("Zoom out");
 		auto acZoomReset = menuZoom->addAction("Reset zoom");
+		auto acFit = menuZoom->addAction("Fit in view");
 
+		//Rotate menu
 		auto menuRotate = menu->addMenu("Rotate");
 		auto acRotateLeft = menuRotate->addAction("Rotate left");
 		auto acRotateRight = menuRotate->addAction("Rotate right");
 		auto acRotateReset = menuRotate->addAction("Reset rotation");
+		menuRotate->addSeparator();
+		auto acRotate90L = menuRotate->addAction("Rotate 90 deg left");
+		auto acRotate90R = menuRotate->addAction("Rotate 90 deg right");
+		auto acRotate180 = menuRotate->addAction("Rotate 180 deg");
 
-		menu->addSeparator();
-
+		//Grid menu
 		auto menuGrid = menu->addMenu("Grid");
 		auto acAddGrid = menuGrid->addAction("Add grid");
 		auto acClearGrid = menuGrid->addAction("Clear grid");
 
+		//Flip menu
+		auto menuFlip = menu->addMenu("Flip");
+		auto acHFlip = menuFlip->addAction("Flip horizontal");
+		auto acVFlip = menuFlip->addAction("Flip vertical");
+		auto acResetFlip = menuFlip->addAction("Reset flip");
+
 		menu->addSeparator();
 
+		auto acResetAll = menu->addAction("ResetAll");
 		auto acClose = menu->addAction("Close");
+
+		//Zoom menu
+		connect(acZoomIn, &QAction::triggered, [this]() { zoom(2.0); });
+		connect(acZoomOut, &QAction::triggered, [this]() { zoom(0.5); });
+		connect(acZoomReset, &QAction::triggered, this, &AdvanceScene::resetZoom);
+		connect(acFit, &QAction::triggered, static_cast<window::AdvPopup*>(this->host.data()),
+			&window::AdvPopup::fitInView);
+
+		//Rotate menu
+		connect(acRotateLeft, &QAction::triggered, [this]() { rotate(-10.0); });
+		connect(acRotateRight, &QAction::triggered, [this]() { rotate(10.0); });
+		connect(acRotateReset, &QAction::triggered, this, &AdvanceScene::resetRotate);
+		connect(acRotate90L, &QAction::triggered, [this]() { rotate(-90.0); });
+		connect(acRotate90R, &QAction::triggered, [this]() { rotate(90.0); });
+		connect(acRotate180, &QAction::triggered, [this]() { rotate(180.0); });
+
+		//Flip menu
+		connect(acHFlip, &QAction::triggered, this, &AdvanceScene::hFlip);
+		connect(acVFlip, &QAction::triggered, this, &AdvanceScene::vFlip);
+		connect(acResetFlip, &QAction::triggered, this, &AdvanceScene::resetFlip);
 
 		connect(acClose, &QAction::triggered, this->host, &QDialog::close);
 
@@ -63,12 +97,10 @@ namespace graphics_scene
 		SimpleScene::mouseMoveEvent(ev);
 		if (midButtonDown)
 		{
-			auto parent = static_cast<QGraphicsView*>(this->parent());
-			
 			auto musCurPos = ev->scenePos();
 
-			auto hScrollBar = parent->horizontalScrollBar();
-			auto vScrollBar = parent->verticalScrollBar();
+			auto hScrollBar = view->horizontalScrollBar();
+			auto vScrollBar = view->verticalScrollBar();
 
 			hScrollBar->setValue(hScrollBar->value() - static_cast<int>(musCurPos.x() - musLastPos.x()));
 			vScrollBar->setValue(vScrollBar->value() - static_cast<int>(musCurPos.y() - musLastPos.y()));
@@ -78,7 +110,7 @@ namespace graphics_scene
 		}
 	}
 
-	void AdvanceScene::mouseReleaseEvent(QGraphicsSceneMouseEvent * ev)
+	void AdvanceScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* ev)
 	{
 		SimpleScene::mouseReleaseEvent(ev);
 
@@ -88,5 +120,60 @@ namespace graphics_scene
 				host->setCursor(Qt::CursorShape::ArrowCursor);
 			midButtonDown = false;
 		}
+	}
+
+	void AdvanceScene::rotate(qreal rotation)
+	{
+		view->rotate(rotation);
+		this->rotation += rotation;
+
+		if (this->rotation >= 360.0)
+		{
+			int times = static_cast<int>(this->rotation / 360.0);
+			this->rotation -= 360.0 * times;
+		}
+	}
+
+	void AdvanceScene::resetRotate()
+	{
+		view->rotate(-rotation);
+		rotation = 0;
+	}
+
+	void AdvanceScene::zoom(qreal delta)
+	{
+		view->scale(delta, delta);
+	}
+	
+	void AdvanceScene::resetZoom()
+	{
+		view->resetMatrix();
+		view->rotate(rotation);
+		
+		if (isHFlip) view->scale(-1, 1);
+		if (isVFlip) view->scale(1, -1);
+	}
+	
+	void AdvanceScene::hFlip()
+	{
+		isHFlip = !isHFlip;
+		view->scale(-1, 1);
+	}
+	
+	void AdvanceScene::vFlip()
+	{
+		isVFlip = !isVFlip;
+		view->scale(1, -1);
+	}
+
+	void AdvanceScene::resetFlip()
+	{
+		if (isHFlip) hFlip();
+		if (isVFlip) vFlip();
+	}
+	
+	void AdvanceScene::resetAll()
+	{
+		view->resetMatrix();
 	}
 }
