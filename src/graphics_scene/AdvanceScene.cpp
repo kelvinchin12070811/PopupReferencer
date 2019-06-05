@@ -75,6 +75,7 @@ namespace graphics_scene
 		connect(acVFlip, &QAction::triggered, this, &AdvanceScene::vFlip);
 		connect(acResetFlip, &QAction::triggered, this, &AdvanceScene::resetFlip);
 
+		connect(acResetAll, &QAction::triggered, this, &AdvanceScene::resetAll);
 		connect(acClose, &QAction::triggered, this->host, &QDialog::close);
 
 		menu->exec(ev->screenPos());

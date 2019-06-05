@@ -3,8 +3,9 @@
 // License, v. 2.0.If a copy of the MPL was not distributed with this
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
-#include <qstandardpaths.h>
 #include <qfiledialog.h>
+#include <qmessagebox.h>
+#include <qstandardpaths.h>
 #include "AdvPopup.hpp"
 #include "MainWindow.hpp"
 
@@ -24,8 +25,6 @@ namespace window
 		ui->setupUi(this);
 
 		auto size = this->size();
-		this->setMinimumSize(size);
-		this->setMaximumSize(size);
 
 		this->setWindowTitle("Popup Referencer");
 		connectWidgets();
@@ -74,6 +73,8 @@ namespace window
 	
 	void MainWindow::connectWidgets()
 	{
+		connect(ui->actionAbout_Qt, &QAction::triggered, [this]() { QMessageBox::aboutQt(this); });
+		connect(ui->actionClose, &QAction::triggered, this, &MainWindow::close);
 		connect(ui->browseLocalBtn, &QPushButton::clicked, this, &MainWindow::browseLocal);
 		connect(ui->closeAllPopupsBtn, &QPushButton::clicked, this, &MainWindow::closeAllPopups);
 		connect(ui->showInAdvancePopup, &QPushButton::clicked, this, &MainWindow::popupImageEx);
