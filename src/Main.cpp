@@ -9,8 +9,8 @@
 #include <qdatetime.h>
 #include <qdir.h>
 #include <qfile.h>
-#include <qfontdatabase.h>
 #include <qmessagebox.h>
+#include "ConfigMng.hpp"
 #include "window/MainWindow.hpp"
 
 void loadStyleSheet(QApplication& application)
@@ -31,7 +31,9 @@ int main(int argc, char** argv)
 {
 	try
 	{
-		QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+		if (ConfigMng::getInstance()->init("display.high_dpi_scaling", true).toBool())
+			QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
 		QApplication app{ argc, argv };
 		
 		loadStyleSheet(app);
@@ -51,6 +53,6 @@ int main(int argc, char** argv)
 
 		log << "[" << QDateTime::currentDateTime().toString(Qt::ISODate).toStdString() << "] ";
 		log << e.what() << std::endl;
-		return -1;
-	}	
+	}
+	return -1;
 }

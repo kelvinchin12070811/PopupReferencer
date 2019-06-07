@@ -16,6 +16,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add project source files here
 set(project_sources
+	src/ConfigMng.cpp
 	src/graphics_scene/AdvanceScene.cpp
 	src/graphics_scene/SimpleScene.cpp
 	src/Main.cpp
@@ -26,6 +27,7 @@ set(project_sources
 
 # add project header files here
 set(project_headers
+	src/ConfigMng.hpp
 	src/graphics_scene/AdvanceScene.hpp
 	src/graphics_scene/SimpleScene.hpp
 	src/window/AdvPopup.hpp
