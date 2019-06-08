@@ -49,6 +49,7 @@ ConfigMng::ConfigMng()
 	settings = std::make_unique<QSettings>("config.ini", QSettings::IniFormat);
 
 	defValues.insert({
-		{ "display.high_dpi_scaling", QVariant{ true } }
+		{ "display.high_dpi_scaling", QVariant{ true } },
+		{ "system.lang", QVariant{ QString{ "english" } } }
 	});
 }

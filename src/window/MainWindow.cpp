@@ -49,7 +49,7 @@ namespace window
 
 	void MainWindow::browseLocal()
 	{
-		QString file = QFileDialog::getOpenFileName(this, "Select reference image",
+		QString file = QFileDialog::getOpenFileName(this, tr("Select image"),
 			QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
 			std::accumulate(supportedFiles.begin(), supportedFiles.end(), QString{},
 				[](const QString & left, const QString & right) {

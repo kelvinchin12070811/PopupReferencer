@@ -25,37 +25,37 @@ namespace graphics_scene
 		QPointer<QMenu> menu{ new QMenu(ev->widget()) };
 
 		//Zoom menu
-		auto menuZoom = menu->addMenu("Zoom");
-		auto acZoomIn = menuZoom->addAction("Zoom in");
-		auto acZoomOut = menuZoom->addAction("Zoom out");
-		auto acZoomReset = menuZoom->addAction("Reset zoom");
-		auto acFit = menuZoom->addAction("Fit in view");
+		auto menuZoom = menu->addMenu(tr("zoom"));
+		auto acZoomIn = menuZoom->addAction(tr("zoomIn"));
+		auto acZoomOut = menuZoom->addAction(tr("zoomOut"));
+		auto acZoomReset = menuZoom->addAction(tr("resetZoom"));
+		auto acFit = menuZoom->addAction(tr("Fit in view"));
 
 		//Rotate menu
-		auto menuRotate = menu->addMenu("Rotate");
-		auto acRotateLeft = menuRotate->addAction("Rotate left");
-		auto acRotateRight = menuRotate->addAction("Rotate right");
-		auto acRotateReset = menuRotate->addAction("Reset rotation");
+		auto menuRotate = menu->addMenu(tr("rotate"));
+		auto acRotateLeft = menuRotate->addAction(tr("rotateLeft"));
+		auto acRotateRight = menuRotate->addAction(tr("rotateRight"));
+		auto acRotateReset = menuRotate->addAction(tr("resetRotation"));
 		menuRotate->addSeparator();
-		auto acRotate90L = menuRotate->addAction("Rotate 90 deg left");
-		auto acRotate90R = menuRotate->addAction("Rotate 90 deg right");
-		auto acRotate180 = menuRotate->addAction("Rotate 180 deg");
+		auto acRotate90L = menuRotate->addAction(tr("rotate90DegLeft"));
+		auto acRotate90R = menuRotate->addAction(tr("rotate90DegRight"));
+		auto acRotate180 = menuRotate->addAction(tr("rotate180Deg"));
 
 		//Grid menu
-		auto menuGrid = menu->addMenu("Grid");
-		auto acAddGrid = menuGrid->addAction("Add grid");
-		auto acClearGrid = menuGrid->addAction("Clear grid");
+		auto menuGrid = menu->addMenu(tr("grid"));
+		auto acAddGrid = menuGrid->addAction(tr("addGrid"));
+		auto acClearGrid = menuGrid->addAction(tr("clearGrid"));
 
 		//Flip menu
-		auto menuFlip = menu->addMenu("Flip");
-		auto acHFlip = menuFlip->addAction("Flip horizontal");
-		auto acVFlip = menuFlip->addAction("Flip vertical");
-		auto acResetFlip = menuFlip->addAction("Reset flip");
+		auto menuFlip = menu->addMenu(tr("flip"));
+		auto acHFlip = menuFlip->addAction(tr("flipHorizontal"));
+		auto acVFlip = menuFlip->addAction(tr("flipVertical"));
+		auto acResetFlip = menuFlip->addAction(tr("resetFlip"));
 
 		menu->addSeparator();
 
-		auto acResetAll = menu->addAction("ResetAll");
-		auto acClose = menu->addAction("Close");
+		auto acResetAll = menu->addAction(tr("ResetAll"));
+		auto acClose = menu->addAction(tr("Close"));
 
 		//Zoom menu
 		connect(acZoomIn, &QAction::triggered, [this]() { zoom(2.0); });
@@ -196,8 +196,16 @@ namespace graphics_scene
 
 	void AdvanceScene::resetRotate()
 	{
+		// Reset flip
+		if (isHFlip) view->scale(-1, 1);
+		if (isVFlip) view->scale(1, -1);
+
 		view->rotate(-rotation);
 		rotation = 0;
+
+		// Apply flip back
+		if (isHFlip) view->scale(-1, 1);
+		if (isVFlip) view->scale(1, -1);
 	}
 
 	void AdvanceScene::zoom(qreal delta)

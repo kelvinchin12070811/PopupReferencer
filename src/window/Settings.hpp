@@ -19,6 +19,7 @@ namespace window
 		Q_OBJECT
 	public:
 		Settings(QWidget* parent = nullptr);
+		void initSettings();
 
 	private:
 		void connectObjects();
@@ -26,5 +27,6 @@ namespace window
 
 	private:
 		std::unique_ptr<Ui::Settings> ui;
+		QStringList langs;
 	};
 }

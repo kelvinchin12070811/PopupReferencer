@@ -11,7 +11,7 @@ project(PopupReferencer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 #find Qt5 and required components
-find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets Svg)
+find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets Svg LinguistTools)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add project source files here

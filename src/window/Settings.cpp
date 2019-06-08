@@ -6,6 +6,7 @@
 #include <qdir.h>
 #include <qfile.h>
 #include <qmessagebox.h>
+#include <regex>
 #include "Settings.hpp"
 #include "ui_Settings.h"
 #include "../ConfigMng.hpp"
@@ -28,11 +29,33 @@ namespace window
 			};
 		}
 		this->setStyleSheet(qss.readAll());
+		initSettings();
+		connectObjects();
+	}
 
+	void Settings::initSettings()
+	{
 		auto cfg = ConfigMng::getInstance();
+	
+		//display.high_dpi_scaling
 		ui->optHighDpi->setChecked(cfg->get("display.high_dpi_scaling").toBool());
 
-		connectObjects();
+		//system.lang
+		QDir dirLangs{ "langs" };
+		auto files = dirLangs.entryList();
+		for (auto&& itr : files)
+		{
+			std::string filename = itr.toStdString();
+			std::smatch result;
+			std::regex regex{ "(.*).qm" };
+			if (std::regex_match(filename, result, regex))
+			{
+				langs.push_back(QString::fromStdString(result[1]));
+			}
+		}
+
+		ui->langsList->addItems(langs);
+		ui->langsList->setCurrentIndex(langs.indexOf(cfg->get("system.lang").toString()));
 	}
 
 	void Settings::connectObjects()
@@ -46,10 +69,10 @@ namespace window
 		auto cfg = ConfigMng::getInstance();
 
 		cfg->set("display.high_dpi_scaling", ui->optHighDpi->isChecked());
+		cfg->set("system.lang", langs[ui->langsList->currentIndex()]);
 
 		cfg->syncConfigs();
-		QMessageBox::information(this, "Configs saved",
-			"Configurations saved, restart application for changes");
+		QMessageBox::information(this, tr("saved"), tr("save message"));
 		this->close();
 	}
 }

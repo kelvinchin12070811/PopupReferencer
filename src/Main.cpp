@@ -10,6 +10,7 @@
 #include <qdir.h>
 #include <qfile.h>
 #include <qmessagebox.h>
+#include <qtranslator.h>
 #include "ConfigMng.hpp"
 #include "window/MainWindow.hpp"
 
@@ -33,12 +34,21 @@ int main(int argc, char** argv)
 {
 	try
 	{
-		if (ConfigMng::getInstance()->get("display.high_dpi_scaling").toBool())
+		auto cfg = ConfigMng::getInstance();
+		if (cfg->get("display.high_dpi_scaling").toBool())
 			QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
 		QApplication app{ argc, argv };
-		
 		loadStyleSheet(app);
+
+		auto translator = std::make_unique<QTranslator>();
+		QString langFile = "langs/%1.qm";
+		langFile = langFile.arg(cfg->get("system.lang").toString());
+		if (!translator->load(langFile))
+		{
+			throw std::runtime_error{ "could not load language file:" + langFile.toStdString() };
+		}
+		app.installTranslator(translator.get());
 
 		auto w = std::make_shared<window::MainWindow>();
 		w->show();

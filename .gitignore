@@ -2,3 +2,4 @@
 CMakeSettings.json
 bin/*
 config.ini
+langs/*.qm
