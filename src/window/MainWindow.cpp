@@ -8,6 +8,7 @@
 #include <qstandardpaths.h>
 #include "AdvPopup.hpp"
 #include "MainWindow.hpp"
+#include "Settings.hpp"
 
 namespace window
 {
@@ -75,10 +76,18 @@ namespace window
 	{
 		connect(ui->actionAbout_Qt, &QAction::triggered, [this]() { QMessageBox::aboutQt(this); });
 		connect(ui->actionClose, &QAction::triggered, this, &MainWindow::close);
+		connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::openSettings);
 		connect(ui->browseLocalBtn, &QPushButton::clicked, this, &MainWindow::browseLocal);
 		connect(ui->closeAllPopupsBtn, &QPushButton::clicked, this, &MainWindow::closeAllPopups);
 		connect(ui->showInAdvancePopup, &QPushButton::clicked, this, &MainWindow::popupImageEx);
 		connect(ui->showInPopupBtn, &QPushButton::clicked, this, &MainWindow::popupImage);
+	}
+
+	void MainWindow::openSettings()
+	{
+		auto settings = new Settings();
+		settings->setAttribute(Qt::WA_DeleteOnClose);
+		settings->show();
 	}
 
 	void MainWindow::popupImage()

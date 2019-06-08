@@ -1,3 +1,6 @@
 <RCC>
-    <qresource prefix="/"/>
+  <qresource prefix="/">
+    <file>resources/custom_widgets/switch_off.svg</file>
+    <file>resources/custom_widgets/switch_on.svg</file>
+  </qresource>
 </RCC>

@@ -26,6 +26,7 @@ namespace window
 		void browseLocal();
 		void closeAllPopups();
 		void connectWidgets();
+		void openSettings();
 		void popupImage();
 		void popupImageEx();
 	private:

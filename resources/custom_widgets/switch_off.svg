@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="32"
+   viewBox="0 0 16.933334 8.4666672"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="switch_off.svg"
+   inkscape:export-filename="C:\Users\Kelvin Chin\Documents\Projects\C++\PopupReferencer\resources\custom_widgets\switch_on.png"
+   inkscape:export-xdpi="384.00003"
+   inkscape:export-ydpi="384.00003">
+  <title
+     id="title4575">Switch On</title>
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4609"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.919596"
+     inkscape:cx="23.070359"
+     inkscape:cy="10.997385"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-midpoints="false"
+     inkscape:snap-others="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Switch On</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Kelvin Chin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-288.53329)"
+     style="opacity:0.98999999">
+    <g
+       id="g4563"
+       transform="matrix(4.2665259,0,0,4.2665259,-1.4188039,-968.63908)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path832"
+         d="m 2.3164186,295.65527 a 0.97171885,0.97171885 0 0 0 -0.9717189,-0.97172 0.97171885,0.97171885 0 0 0 -0.97171881,0.97172 0.97171885,0.97171885 0 0 0 0.97171881,0.97172 0.97171885,0.97171885 0 0 0 0.9717189,-0.97172 z"
+         style="opacity:1;fill:#bfbfbf;fill-opacity:1;stroke:none;stroke-width:0.07756216;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="circle4542"
+         d="m 4.2759727,295.65527 a 0.97171885,0.97171885 0 0 0 -0.9717189,-0.97172 0.97171885,0.97171885 0 0 0 -0.9717188,0.97172 0.97171885,0.97171885 0 0 0 0.9717188,0.97172 0.97171885,0.97171885 0 0 0 0.9717189,-0.97172 z"
+         style="opacity:1;fill:#bfbfbf;fill-opacity:1;stroke:none;stroke-width:0.07756216;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4548"
+         d="m 1.3446997,294.68355 h 1.959554 v 1.94344 h -1.959554 z"
+         style="fill:#bfbfbf;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path4558"
+       d="m 16.367064,292.78143 a 3.7122879,3.7122879 0 0 0 -3.71229,-3.71227 3.7122879,3.7122879 0 0 0 -3.7122976,3.71227 3.7122879,3.7122879 0 0 0 3.7122976,3.71232 3.7122879,3.7122879 0 0 0 3.71229,-3.71232 z"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29631311;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>
