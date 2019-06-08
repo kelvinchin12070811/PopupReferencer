@@ -4,6 +4,7 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #pragma once
+#include <map>
 #include <memory>
 #include <qvariant.h>
 #include <qsettings.h>
@@ -13,9 +14,8 @@ class ConfigMng
 public:
 	static ConfigMng* getInstance();
 
-	QVariant get(const QString& key, const QVariant& value = QVariant{});
+	QVariant get(const QString& key);
 	bool has(const QString& key);
-	QVariant init(const QString& key, const QVariant& defaultValue = QVariant{});
 	void syncConfigs();
 	void set(const QString& key, const QVariant& value);
 private:
@@ -24,4 +24,5 @@ private:
 	
 private:
 	std::unique_ptr<QSettings> settings;
+	std::map<QString, QVariant> defValues;
 };

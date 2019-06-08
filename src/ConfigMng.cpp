@@ -12,25 +12,26 @@ ConfigMng* ConfigMng::getInstance()
 	return &instance;
 }
 
-QVariant ConfigMng::get(const QString& key, const QVariant& defaultValue)
+QVariant ConfigMng::get(const QString& key)
 {
-	return settings->value(key, defaultValue);
+	auto result = settings->value(key);
+	if (result.isNull())
+	{
+		try
+		{
+			return defValues.at(key);
+		}
+		catch (std::exception & e)
+		{
+			return result;
+		}
+	}
+	return result;
 }
 
 bool ConfigMng::has(const QString& key)
 {
 	return settings->contains(key);
-}
-
-QVariant ConfigMng::init(const QString& key, const QVariant& value)
-{
-	auto result = get(key);
-	if (result.isNull())
-	{
-		set(key, value);
-		result = value;
-	}
-	return result;
 }
 
 void ConfigMng::syncConfigs()
@@ -46,4 +47,8 @@ void ConfigMng::set(const QString& key, const QVariant& value)
 ConfigMng::ConfigMng()
 {
 	settings = std::make_unique<QSettings>("config.ini", QSettings::IniFormat);
+
+	defValues.insert({
+		{ "display.high_dpi_scaling", QVariant{ true } }
+	});
 }

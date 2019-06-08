@@ -12,6 +12,7 @@ namespace graphics_scene
 {
 	class SimpleScene : public QGraphicsScene
 	{
+		Q_OBJECT
 	public:
 		SimpleScene(QDialog* host, QObject* parent = nullptr);
 

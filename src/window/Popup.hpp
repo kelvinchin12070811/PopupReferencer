@@ -22,6 +22,7 @@ namespace window
 		bool eventFilter(QObject* object, QEvent* ev) override;
 		virtual void show();
 		void fitInView();
+		const QPixmap& getPixmap();
 
 	protected:
 		void closeEvent(QCloseEvent* ev) override;

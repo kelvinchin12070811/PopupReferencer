@@ -6,9 +6,11 @@
 #include <qaction.h>
 #include <qgraphicssceneevent.h>
 #include <qmenu.h>
+#include <qpen.h>
 #include <qscrollbar.h>
 #include "AdvanceScene.hpp"
 #include "../window/AdvPopup.hpp"
+#include "../window/GridCreator.hpp"
 
 namespace graphics_scene
 {
@@ -70,6 +72,10 @@ namespace graphics_scene
 		connect(acRotate90R, &QAction::triggered, [this]() { rotate(90.0); });
 		connect(acRotate180, &QAction::triggered, [this]() { rotate(180.0); });
 
+		//Grid menu
+		connect(acAddGrid, &QAction::triggered, this, &AdvanceScene::setGrid);
+		connect(acClearGrid, &QAction::triggered, this, &AdvanceScene::clearGrid);
+
 		//Flip menu
 		connect(acHFlip, &QAction::triggered, this, &AdvanceScene::hFlip);
 		connect(acVFlip, &QAction::triggered, this, &AdvanceScene::vFlip);
@@ -121,6 +127,59 @@ namespace graphics_scene
 				host->setCursor(Qt::CursorShape::ArrowCursor);
 			midButtonDown = false;
 		}
+	}
+
+	void AdvanceScene::setGrid()
+	{
+		using namespace window;
+		auto gridCreator = std::make_unique<GridCreator>(view->parentWidget());
+		gridCreator->exec();
+
+		auto result = gridCreator->getGridInfo();
+		if (!result.has_value())
+			return;
+
+		if (!gridItm.empty())
+			clearGrid();
+
+		auto gridInfo = *result;
+		QPen pen{ std::get<GridInfo::color>(gridInfo) };
+		
+		auto instPopup = static_cast<window::AdvPopup*>(this->host.data());
+		auto szPixmap = instPopup->getPixmap().size();
+		QPointF gridOffset{ std::get<GridInfo::col_width>(gridInfo),
+			std::get<GridInfo::row_height>(gridInfo) };
+
+		gridItm.push_back(this->addLine(0.0, 0.0, 0.0, szPixmap.height(), pen));
+		gridItm.push_back(this->addLine(szPixmap.width(), 0.0, szPixmap.width(), szPixmap.height(), pen));
+		gridItm.push_back(this->addLine(0.0, 0.0, szPixmap.width(), 0.0, pen));
+		gridItm.push_back(this->addLine(0.0, szPixmap.height(), szPixmap.width(), szPixmap.height(), pen));
+		
+		if (gridOffset.x() != 0)
+		{
+			for (qreal countX{ gridOffset.x() }; countX < szPixmap.width(); countX += gridOffset.x())
+			{ // Generate vertical grids allong x axis
+				auto instGrid = this->addLine(countX, 0.0, countX, szPixmap.height(), pen);
+				gridItm.push_back(instGrid);
+			}
+		}
+
+		if (gridOffset.y() != 0)
+		{
+			for (qreal countY{ gridOffset.y() }; countY < szPixmap.height(); countY += gridOffset.y())
+			{ // Generate horizontal grids allong y axis
+				auto instGrid = this->addLine(0.0, countY, szPixmap.width(), countY, pen);
+				gridItm.push_back(instGrid);
+			}
+		}
+	}
+
+	void AdvanceScene::clearGrid()
+	{
+		for (auto&& itr : gridItm)
+			this->removeItem(itr);
+
+		gridItm.clear();
 	}
 
 	void AdvanceScene::rotate(qreal rotation)
@@ -176,5 +235,6 @@ namespace graphics_scene
 	void AdvanceScene::resetAll()
 	{
 		view->resetMatrix();
+		clearGrid();
 	}
 }

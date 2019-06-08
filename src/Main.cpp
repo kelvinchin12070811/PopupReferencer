@@ -18,10 +18,12 @@ void loadStyleSheet(QApplication& application)
 	QFile file{ "styles/master.qss" };
 	file.open(QIODevice::ReadOnly);
 	if (!file.isOpen())
+	{
 		throw std::runtime_error{
 			"Unable to load style file,pwd:" + QDir::currentPath().toStdString() + ",file:" +
 			file.fileName().toStdString()
 		};
+	}
 
 	QString qss{ file.readAll() };
 	application.setStyleSheet(qss);
@@ -31,7 +33,7 @@ int main(int argc, char** argv)
 {
 	try
 	{
-		if (ConfigMng::getInstance()->init("display.high_dpi_scaling", true).toBool())
+		if (ConfigMng::getInstance()->get("display.high_dpi_scaling").toBool())
 			QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
 		QApplication app{ argc, argv };

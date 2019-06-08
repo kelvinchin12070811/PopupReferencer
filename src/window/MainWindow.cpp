@@ -12,12 +12,7 @@
 
 namespace window
 {
-	const std::vector<QString> MainWindow::supportedFiles{
-		" *.jpg",
-		" *.jpeg",
-		" *.png",
-		" *.gif"
-	};
+	const std::vector<QString> MainWindow::supportedFiles{ "jpg", "jpeg", "png", "gif", "svg" };
 
 	MainWindow::MainWindow(QWidget* parent) :
 		QMainWindow(parent)
@@ -56,7 +51,12 @@ namespace window
 	{
 		QString file = QFileDialog::getOpenFileName(this, "Select reference image",
 			QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-			std::accumulate(supportedFiles.begin(), supportedFiles.end(), QString{}));
+			std::accumulate(supportedFiles.begin(), supportedFiles.end(), QString{},
+				[](const QString & left, const QString & right) {
+					return left + " *." + right;
+				}
+			)
+		);
 		if (file.isEmpty()) return;
 		
 		ui->urlField->setText(file);
@@ -85,9 +85,8 @@ namespace window
 
 	void MainWindow::openSettings()
 	{
-		auto settings = new Settings();
-		settings->setAttribute(Qt::WA_DeleteOnClose);
-		settings->show();
+		auto settings = std::make_unique<Settings>(this);
+		settings->exec();
 	}
 
 	void MainWindow::popupImage()

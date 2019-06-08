@@ -63,6 +63,11 @@ namespace window
 		auto rect = graphicsItm->boundingRect();
 		ui->graphicsView->fitInView(rect, Qt::KeepAspectRatio);
 	}
+
+	const QPixmap& Popup::getPixmap()
+	{
+		return image;
+	}
 	
 	void Popup::closeEvent(QCloseEvent* ev)
 	{

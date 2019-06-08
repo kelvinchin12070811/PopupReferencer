@@ -14,19 +14,7 @@
    <string>Settings</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QCheckBox::indicator {
-	padding-top: 3px;
-	width: 40px;
-	height: 20px;
-}
-
-QCheckBox::indicator:unchecked {
-	image: url(:/resources/custom_widgets/switch_off.svg);
-}
-
-QCheckBox::indicator:checked {
-	image: url(:/resources/custom_widgets/switch_on.svg);
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

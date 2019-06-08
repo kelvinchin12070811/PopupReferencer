@@ -1,0 +1,13 @@
+QCheckBox::indicator {
+    padding-top: 3px;
+    width: 40px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/resources/custom_widgets/switch_off.svg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/resources/custom_widgets/switch_on.svg);
+}

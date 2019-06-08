@@ -21,6 +21,7 @@ set(project_sources
 	src/graphics_scene/SimpleScene.cpp
 	src/Main.cpp
 	src/window/AdvPopup.cpp
+	src/window/GridCreator.cpp
 	src/window/MainWindow.cpp
 	src/window/Popup.cpp
 	src/window/Settings.cpp
@@ -33,6 +34,7 @@ set(project_headers
 	src/graphics_scene/SimpleScene.hpp
 	src/window/AdvPopup.hpp
 	src/window/BasicPopup.hpp
+	src/window/GridCreator.hpp
 	src/window/MainWindow.hpp
 	src/window/Popup.hpp
 	src/window/Settings.hpp
@@ -40,6 +42,7 @@ set(project_headers
 
 # add project ui files here
 set(project_ui
+	src/window/GridCreator.ui
 	src/window/MainWindow.ui
 	src/window/Popup.ui
 	src/window/Settings.ui

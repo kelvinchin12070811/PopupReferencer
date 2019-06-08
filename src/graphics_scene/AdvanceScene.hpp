@@ -4,9 +4,11 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #pragma once
+#include <list>
 #include <qdialog.h>
 #include <qgraphicsscene.h>
 #include <qgraphicsview.h>
+#include <qgraphicsitem.h>
 #include <qpointer.h>
 #include "SimpleScene.hpp"
 
@@ -14,6 +16,7 @@ namespace graphics_scene
 {
 	class AdvanceScene : public SimpleScene
 	{
+		Q_OBJECT
 	public:
 		AdvanceScene(QDialog* host, QObject* parent = nullptr);
 
@@ -24,6 +27,8 @@ namespace graphics_scene
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent* ev) override;
 
 	private:
+		void setGrid();
+		void clearGrid();
 		void rotate(qreal rotation);
 		void resetRotate();
 		void zoom(qreal delta);
@@ -40,5 +45,6 @@ namespace graphics_scene
 		qreal rotation{ 0 };
 		QPointF musLastPos;
 		QGraphicsView* view{ nullptr };
+		std::list<QGraphicsLineItem*> gridItm;
 	};
 }
