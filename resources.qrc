@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="/">
+    <file>resources/icons/icon.svg</file>
+    <file>resources/icons/close_all.svg</file>
+    <file>resources/icons/popup.svg</file>
+    <file>resources/icons/popup_adv.svg</file>
+    <file>resources/icons/load_online.svg</file>
+    <file>resources/icons/local_files.svg</file>
     <file>resources/custom_widgets/switch_off.svg</file>
     <file>resources/custom_widgets/switch_on.svg</file>
   </qresource>

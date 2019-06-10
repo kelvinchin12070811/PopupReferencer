@@ -18,8 +18,7 @@ namespace window
 		connectObjects();
 
 		gridInfo = { QColor{ Qt::GlobalColor::blue }, 0.0, 0.0 };
-		auto&& colour = std::get<GridInfo::color>(gridInfo);
-		ui->colorField->setText(colour.name());
+		ui->colorField->setText("#00f");
 	}
 	
 	std::optional<GridInfo::Type> GridCreator::getGridInfo()
@@ -34,11 +33,19 @@ namespace window
 	{
 		double szCol = static_cast<double>(ui->xSize->value());
 		double szRow = static_cast<double>(ui->ySize->value());
-		accepted = true;
+		auto colourName = ui->colorField->text();
 
+		if (!QColor::isValidColor(colourName))
+		{
+			QMessageBox::information(this, tr("invalid colour"), tr("colour is not valid"));
+			return;
+		}
+
+		std::get<GridInfo::color>(gridInfo) = QColor{ colourName };
 		std::get<GridInfo::col_width>(gridInfo) = szCol;
 		std::get<GridInfo::row_height>(gridInfo) = szRow;
 
+		accepted = true;
 		this->close();
 	}
 
@@ -54,16 +61,21 @@ namespace window
 		if (QColor::isValidColor(colourName))
 		{
 			ui->labColourPreview->setStyleSheet("background-color: " + colourName + ";");
+			ui->labColourPreview->setText("");
+		}
+		else
+		{
+			ui->labColourPreview->setStyleSheet("background-color: #fff; color: #f00;");
+			ui->labColourPreview->setText("X");
 		}
 	}
 	
 	void GridCreator::showColourPicker()
 	{
-		auto dialog = std::make_unique<QColorDialog>(this);
+		auto dialog = std::make_unique<QColorDialog>(QColor{ ui->colorField->text() }, this);
+		connect(dialog.get(), &QColorDialog::colorSelected, [this](const QColor & colour) {
+			ui->colorField->setText(colour.name());
+		});
 		dialog->exec();
-		QColor colourSelected{ dialog->currentColor() };
-
-		std::get<GridInfo::color>(gridInfo) = colourSelected;
-		ui->colorField->setText(colourSelected.name());
 	}
 }

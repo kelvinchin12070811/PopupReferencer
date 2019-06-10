@@ -23,6 +23,7 @@ namespace window
 		auto size = this->size();
 
 		this->setWindowTitle("Popup Referencer");
+		this->setWindowIcon(QIcon{ ":/resources/icons/icon.svg" });
 		connectWidgets();
 	}
 	

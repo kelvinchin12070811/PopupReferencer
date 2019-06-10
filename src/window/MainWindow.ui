@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>612</width>
-    <height>128</height>
+    <width>504</width>
+    <height>125</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,6 +32,12 @@
       </item>
       <item>
        <widget class="QLineEdit" name="urlField">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -39,44 +45,138 @@
       </item>
       <item>
        <widget class="QPushButton" name="browseLocalBtn">
+        <property name="toolTip">
+         <string>load from loacal</string>
+        </property>
         <property name="text">
-         <string>Browse Local</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/resources/icons/local_files.svg</normaloff>:/resources/icons/local_files.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="browseInternetBtn">
+        <property name="toolTip">
+         <string>load from internet</string>
+        </property>
         <property name="text">
-         <string>Browse Internet</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/resources/icons/load_online.svg</normaloff>:/resources/icons/load_online.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>43</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QPushButton" name="showInPopupBtn">
+        <property name="toolTip">
+         <string>show in simple viewer</string>
+        </property>
         <property name="text">
-         <string>Show in simple popup viewer</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/resources/icons/popup.svg</normaloff>:/resources/icons/popup.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="showInAdvancePopup">
+        <property name="toolTip">
+         <string>show in adv viewer</string>
+        </property>
         <property name="text">
-         <string>Show in advance popup viewer</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/resources/icons/popup_adv.svg</normaloff>:/resources/icons/popup_adv.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="closeAllPopupsBtn">
+        <property name="toolTip">
+         <string>close all popups</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/resources/icons/close_all.svg</normaloff>:/resources/icons/close_all.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QPushButton" name="closeAllPopupsBtn">
-      <property name="text">
-       <string>Close all popups</string>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
@@ -85,7 +185,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>612</width>
+     <width>504</width>
      <height>21</height>
     </rect>
    </property>
@@ -133,6 +233,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

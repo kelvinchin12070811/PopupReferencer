@@ -22,12 +22,11 @@ QPushButton {
 }
 
 QPushButton:hover {
-	background-color: grey;
+	background-color: #b8b8b8;
 }
 
 QPushButton:pressed {
-	background-color: lightslategray;
-	color: black;
+	background-color: #f3f3f3;
 }
 
 window--Popup QGraphicsView QScrollBar {

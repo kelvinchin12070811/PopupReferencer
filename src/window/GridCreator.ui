@@ -40,6 +40,9 @@
          <height>20</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: red;</string>
+       </property>
        <property name="text">
         <string/>
        </property>

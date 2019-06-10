@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en" sourcelanguage="en">
+<TS version="2.1" language="zh_TW" sourcelanguage="en">
 <context>
     <name>GridCreator</name>
     <message>
         <location filename="../src/window/GridCreator.ui" line="14"/>
         <source>Create Grid</source>
-        <translation>Create Grid</translation>
+        <translation>創建參考綫</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.ui" line="22"/>
         <source>Colour</source>
-        <translation>Colour</translation>
+        <translation>參考綫顔色</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.ui" line="54"/>
         <source>Choose Colour</source>
-        <translation>Choose colour</translation>
+        <translation>選擇顔色</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.ui" line="71"/>
         <source>Colom width</source>
-        <translation>Column width</translation>
+        <translation>寬</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.ui" line="98"/>
         <source>Row heigh</source>
-        <translation>Row height</translation>
+        <translation>高</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.ui" line="145"/>
         <source>Create</source>
-        <translation>Create</translation>
+        <translation>創建</translation>
     </message>
 </context>
 <context>
@@ -44,87 +44,67 @@
     <message>
         <location filename="../src/window/MainWindow.ui" line="29"/>
         <source>Image URL</source>
-        <translation>Image URL</translation>
-    </message>
-    <message>
-        <source>Browse Local</source>
-        <translation type="vanished">Browse from local</translation>
-    </message>
-    <message>
-        <source>Browse Internet</source>
-        <translation type="vanished">Browse from internet</translation>
+        <translation>參考圖片地址</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="49"/>
         <source>load from loacal</source>
-        <translation>Browse from local</translation>
+        <translation>瀏覽本地圖片</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="69"/>
         <source>load from internet</source>
-        <translation>Browse from internet</translation>
-    </message>
-    <message>
-        <source>Show in simple popup viewer</source>
-        <translation type="vanished">Show in simple popup</translation>
-    </message>
-    <message>
-        <source>Show in advance popup viewer</source>
-        <translation type="vanished">Show in advance popup</translation>
-    </message>
-    <message>
-        <source>Close all popups</source>
-        <translation type="vanished">Close all popups</translation>
+        <translation>瀏覽在綫圖片</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="122"/>
         <source>show in simple viewer</source>
-        <translation>Popup with simple frame</translation>
+        <translation>使用基本彈窗打開</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="142"/>
         <source>show in adv viewer</source>
-        <translation>Popup in advance frame</translation>
+        <translation>使用進階彈窗打開</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="162"/>
         <source>close all popups</source>
-        <translation>Close all frames</translation>
+        <translation>關閉所有彈窗</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="194"/>
         <source>File</source>
-        <translation>&amp;File</translation>
+        <translation>(&amp;F)文件</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="201"/>
         <source>Help</source>
-        <translation>&amp;Help</translation>
+        <translation>(&amp;H)幫助</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="212"/>
         <source>Close</source>
-        <translation>Close</translation>
+        <translation>退出程序</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="217"/>
         <source>Manual</source>
-        <translation>Manual</translation>
+        <translation>使用手冊</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="222"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="227"/>
         <source>About Qt</source>
-        <translation>About Qt</translation>
+        <translation>關於Qt</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.ui" line="232"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>設置</translation>
     </message>
 </context>
 <context>
@@ -140,27 +120,27 @@
     <message>
         <location filename="../src/window/Settings.ui" line="14"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>設置</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.ui" line="23"/>
         <source>High DPI Scalling</source>
-        <translation></translation>
+        <translation>自動適應高分辨率環境</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.ui" line="35"/>
         <source>Languages</source>
-        <translation></translation>
+        <translation>語言</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.ui" line="75"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.ui" line="82"/>
         <source>Save</source>
-        <translation></translation>
+        <translation>保存</translation>
     </message>
 </context>
 <context>
@@ -168,107 +148,107 @@
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="28"/>
         <source>zoom</source>
-        <translation>Zoom</translation>
+        <translation>放大/縮小</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="29"/>
         <source>zoomIn</source>
-        <translation>Zoom in</translation>
+        <translation>放大</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="30"/>
         <source>zoomOut</source>
-        <translation>Zoom out</translation>
+        <translation>縮小</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="31"/>
         <source>resetZoom</source>
-        <translation>Reset zoom</translation>
+        <translation>重置</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="32"/>
         <source>Fit in view</source>
-        <translation>Fit in view</translation>
+        <translation>適應當前彈窗大小</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="35"/>
         <source>rotate</source>
-        <translation>Rotate</translation>
+        <translation>旋轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="36"/>
         <source>rotateLeft</source>
-        <translation>Rotate Left</translation>
+        <translation>向左旋轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="37"/>
         <source>rotateRight</source>
-        <translation>Rotate Right</translation>
+        <translation>向右旋轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="38"/>
         <source>resetRotation</source>
-        <translation>Reset Rotation</translation>
+        <translation>重置</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="40"/>
         <source>rotate90DegLeft</source>
-        <translation>Rotate 90 degree left</translation>
+        <translation>向左旋轉90°</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="41"/>
         <source>rotate90DegRight</source>
-        <translation>Rotate 90 degree right</translation>
+        <translation>向右旋轉90°</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="42"/>
         <source>rotate180Deg</source>
-        <translation>Rotate 180 degree</translation>
+        <translation>旋轉180°</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="45"/>
         <source>grid</source>
-        <translation>Grid</translation>
+        <translation>參考綫</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="46"/>
         <source>addGrid</source>
-        <translation>Add Grid</translation>
+        <translation>添加參考綫</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="47"/>
         <source>clearGrid</source>
-        <translation>Clear Grid</translation>
+        <translation>清除參考綫</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="50"/>
         <source>flip</source>
-        <translation>Flip</translation>
+        <translation>反轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="51"/>
         <source>flipHorizontal</source>
-        <translation>Flip horizontal</translation>
+        <translation>水平翻轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="52"/>
         <source>flipVertical</source>
-        <translation>Flip vertical</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="53"/>
         <source>resetFlip</source>
-        <translation>Reset flip</translation>
+        <translation>重置</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="57"/>
         <source>ResetAll</source>
-        <translation>Reset all</translation>
+        <translation>重置畫布</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="58"/>
         <source>Close</source>
-        <translation>Close</translation>
+        <translation>關閉</translation>
     </message>
 </context>
 <context>
@@ -276,7 +256,7 @@
     <message>
         <location filename="../src/graphics_scene/SimpleScene.cpp" line="20"/>
         <source>Close</source>
-        <translation>Close</translation>
+        <translation>關閉</translation>
     </message>
 </context>
 <context>
@@ -284,12 +264,12 @@
     <message>
         <location filename="../src/window/GridCreator.cpp" line="40"/>
         <source>invalid colour</source>
-        <translation>Invalid Colour</translation>
+        <translation>非法顔色數值</translation>
     </message>
     <message>
         <location filename="../src/window/GridCreator.cpp" line="40"/>
         <source>colour is not valid</source>
-        <translation>The colour that entered is not a valid colour</translation>
+        <translation>目前所選的顔色為非法顔色參數</translation>
     </message>
 </context>
 <context>
@@ -297,7 +277,7 @@
     <message>
         <location filename="../src/window/MainWindow.cpp" line="52"/>
         <source>Select image</source>
-        <translation>Select image</translation>
+        <translation>選擇圖片</translation>
     </message>
 </context>
 <context>
@@ -305,12 +285,12 @@
     <message>
         <location filename="../src/window/Settings.cpp" line="75"/>
         <source>saved</source>
-        <translation>Settings saved</translation>
+        <translation>保存完成</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.cpp" line="75"/>
         <source>save message</source>
-        <translation>Settings saved, please restart the application to take effect</translation>
+        <translation>已保存設置，請重新啓動程序使設置生效</translation>
     </message>
 </context>
 </TS>

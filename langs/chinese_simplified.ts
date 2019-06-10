@@ -14,22 +14,22 @@
         <translation>参考线颜色</translation>
     </message>
     <message>
-        <location filename="../src/window/GridCreator.ui" line="51"/>
+        <location filename="../src/window/GridCreator.ui" line="54"/>
         <source>Choose Colour</source>
         <translation>选择颜色</translation>
     </message>
     <message>
-        <location filename="../src/window/GridCreator.ui" line="68"/>
+        <location filename="../src/window/GridCreator.ui" line="71"/>
         <source>Colom width</source>
         <translation>宽</translation>
     </message>
     <message>
-        <location filename="../src/window/GridCreator.ui" line="95"/>
+        <location filename="../src/window/GridCreator.ui" line="98"/>
         <source>Row heigh</source>
         <translation>高</translation>
     </message>
     <message>
-        <location filename="../src/window/GridCreator.ui" line="142"/>
+        <location filename="../src/window/GridCreator.ui" line="145"/>
         <source>Create</source>
         <translation>创建</translation>
     </message>
@@ -47,62 +47,82 @@
         <translation>参考图片地址</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="43"/>
         <source>Browse Local</source>
-        <translation>浏览本地文件</translation>
+        <translation type="vanished">浏览本地文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="50"/>
         <source>Browse Internet</source>
-        <translation>浏览在线文件</translation>
+        <translation type="vanished">浏览在线文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="61"/>
+        <location filename="../src/window/MainWindow.ui" line="49"/>
+        <source>load from loacal</source>
+        <translation>浏览本地图片</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.ui" line="69"/>
+        <source>load from internet</source>
+        <translation>浏览在线图片</translation>
+    </message>
+    <message>
         <source>Show in simple popup viewer</source>
-        <translation>使用基本窗口打开</translation>
+        <translation type="vanished">使用基本窗口打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="68"/>
         <source>Show in advance popup viewer</source>
-        <translation>使用进阶窗口打开</translation>
+        <translation type="vanished">使用进阶窗口打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="77"/>
         <source>Close all popups</source>
-        <translation>关闭所有窗口</translation>
+        <translation type="vanished">关闭所有窗口</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="94"/>
+        <location filename="../src/window/MainWindow.ui" line="122"/>
+        <source>show in simple viewer</source>
+        <translation>使用基本弹窗打开</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.ui" line="142"/>
+        <source>show in adv viewer</source>
+        <translation>使用进阶弹窗打开</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.ui" line="162"/>
+        <source>close all popups</source>
+        <translation>关闭所有弹窗</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.ui" line="194"/>
         <source>File</source>
         <translation>(&amp;F)文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="101"/>
+        <location filename="../src/window/MainWindow.ui" line="201"/>
         <source>Help</source>
         <translation>(&amp;H)帮助</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="112"/>
+        <location filename="../src/window/MainWindow.ui" line="212"/>
         <source>Close</source>
-        <translation>关闭程序</translation>
+        <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="117"/>
+        <location filename="../src/window/MainWindow.ui" line="217"/>
         <source>Manual</source>
         <translation>使用手册</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="122"/>
+        <location filename="../src/window/MainWindow.ui" line="222"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="127"/>
+        <location filename="../src/window/MainWindow.ui" line="227"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="132"/>
+        <location filename="../src/window/MainWindow.ui" line="232"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -125,7 +145,7 @@
     <message>
         <location filename="../src/window/Settings.ui" line="23"/>
         <source>High DPI Scalling</source>
-        <translation></translation>
+        <translation>自动适应高分辨率环境</translation>
     </message>
     <message>
         <location filename="../src/window/Settings.ui" line="35"/>
@@ -168,7 +188,7 @@
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="32"/>
         <source>Fit in view</source>
-        <translation></translation>
+        <translation>适应当前弹窗大小</translation>
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="35"/>
@@ -260,6 +280,19 @@
     </message>
 </context>
 <context>
+    <name>window::GridCreator</name>
+    <message>
+        <location filename="../src/window/GridCreator.cpp" line="40"/>
+        <source>invalid colour</source>
+        <translation>非法颜色数值</translation>
+    </message>
+    <message>
+        <location filename="../src/window/GridCreator.cpp" line="40"/>
+        <source>colour is not valid</source>
+        <translation>目前所选的颜色为非法颜色參數</translation>
+    </message>
+</context>
+<context>
     <name>window::MainWindow</name>
     <message>
         <location filename="../src/window/MainWindow.cpp" line="52"/>
@@ -277,7 +310,7 @@
     <message>
         <location filename="../src/window/Settings.cpp" line="75"/>
         <source>save message</source>
-        <translation>已保存设置，请重新启动程以便使设置生效</translation>
+        <translation>已保存设置，请重新启动程序使设置生效</translation>
     </message>
 </context>
 </TS>
