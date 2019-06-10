@@ -55,6 +55,7 @@ namespace graphics_scene
 		menu->addSeparator();
 
 		auto acResetAll = menu->addAction(tr("ResetAll"));
+		auto acMinimize = menu->addAction(tr("minimize"));
 		auto acClose = menu->addAction(tr("Close"));
 
 		//Zoom menu
@@ -82,6 +83,7 @@ namespace graphics_scene
 		connect(acResetFlip, &QAction::triggered, this, &AdvanceScene::resetFlip);
 
 		connect(acResetAll, &QAction::triggered, this, &AdvanceScene::resetAll);
+		connect(acMinimize, &QAction::triggered, this->host, &QDialog::showMinimized);
 		connect(acClose, &QAction::triggered, this->host, &QDialog::close);
 
 		menu->exec(ev->screenPos());

@@ -60,9 +60,8 @@
         <translation>浏览本地图片</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="69"/>
         <source>load from internet</source>
-        <translation>浏览在线图片</translation>
+        <translation type="vanished">浏览在线图片</translation>
     </message>
     <message>
         <source>Show in simple popup viewer</source>
@@ -77,52 +76,52 @@
         <translation type="vanished">关闭所有窗口</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="122"/>
+        <location filename="../src/window/MainWindow.ui" line="102"/>
         <source>show in simple viewer</source>
         <translation>使用基本弹窗打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="142"/>
+        <location filename="../src/window/MainWindow.ui" line="122"/>
         <source>show in adv viewer</source>
         <translation>使用进阶弹窗打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="162"/>
+        <location filename="../src/window/MainWindow.ui" line="142"/>
         <source>close all popups</source>
         <translation>关闭所有弹窗</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="194"/>
+        <location filename="../src/window/MainWindow.ui" line="174"/>
         <source>File</source>
         <translation>(&amp;F)文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="201"/>
+        <location filename="../src/window/MainWindow.ui" line="181"/>
         <source>Help</source>
         <translation>(&amp;H)帮助</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="212"/>
+        <location filename="../src/window/MainWindow.ui" line="192"/>
         <source>Close</source>
         <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="217"/>
+        <location filename="../src/window/MainWindow.ui" line="197"/>
         <source>Manual</source>
         <translation>使用手册</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="222"/>
+        <location filename="../src/window/MainWindow.ui" line="202"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="227"/>
+        <location filename="../src/window/MainWindow.ui" line="207"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="232"/>
+        <location filename="../src/window/MainWindow.ui" line="212"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -267,6 +266,11 @@
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="58"/>
+        <source>minimize</source>
+        <translation>最小化弹窗</translation>
+    </message>
+    <message>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="59"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
@@ -275,6 +279,11 @@
     <name>graphics_scene::SimpleScene</name>
     <message>
         <location filename="../src/graphics_scene/SimpleScene.cpp" line="20"/>
+        <source>Minimize</source>
+        <translation>最小化弹窗</translation>
+    </message>
+    <message>
+        <location filename="../src/graphics_scene/SimpleScene.cpp" line="21"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
@@ -295,7 +304,7 @@
 <context>
     <name>window::MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.cpp" line="52"/>
+        <location filename="../src/window/MainWindow.cpp" line="53"/>
         <source>Select image</source>
         <translation>选择图片</translation>
     </message>

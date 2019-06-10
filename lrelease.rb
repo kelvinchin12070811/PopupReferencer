@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 files = Dir.children 'langs'
 
 files.each do | file |

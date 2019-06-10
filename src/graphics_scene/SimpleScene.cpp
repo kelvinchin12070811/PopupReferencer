@@ -17,9 +17,10 @@ namespace graphics_scene
 	void SimpleScene::contextMenuEvent(QGraphicsSceneContextMenuEvent* ev)
 	{
 		QPointer<QMenu> menu{ new QMenu(ev->widget()) };
-		auto closeAc = menu->addAction(tr("Close"));
-		connect(closeAc, &QAction::triggered, host, &QWidget::close);
-
+		auto acMinimize = menu->addAction(tr("Minimize"));
+		auto acClose = menu->addAction(tr("Close"));
+		connect(acClose, &QAction::triggered, host, &QWidget::close);
+		connect(acMinimize, &QAction::triggered, host, &QDialog::showMinimized);
 		menu->exec(ev->screenPos());
 	}
 	

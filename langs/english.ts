@@ -60,9 +60,8 @@
         <translation>Browse from local</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="69"/>
         <source>load from internet</source>
-        <translation>Browse from internet</translation>
+        <translation type="vanished">Browse from internet</translation>
     </message>
     <message>
         <source>Show in simple popup viewer</source>
@@ -77,52 +76,52 @@
         <translation type="vanished">Close all popups</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="122"/>
+        <location filename="../src/window/MainWindow.ui" line="102"/>
         <source>show in simple viewer</source>
         <translation>Popup with simple frame</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="142"/>
+        <location filename="../src/window/MainWindow.ui" line="122"/>
         <source>show in adv viewer</source>
         <translation>Popup in advance frame</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="162"/>
+        <location filename="../src/window/MainWindow.ui" line="142"/>
         <source>close all popups</source>
         <translation>Close all frames</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="194"/>
+        <location filename="../src/window/MainWindow.ui" line="174"/>
         <source>File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="201"/>
+        <location filename="../src/window/MainWindow.ui" line="181"/>
         <source>Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="212"/>
+        <location filename="../src/window/MainWindow.ui" line="192"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="217"/>
+        <location filename="../src/window/MainWindow.ui" line="197"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="222"/>
+        <location filename="../src/window/MainWindow.ui" line="202"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="227"/>
+        <location filename="../src/window/MainWindow.ui" line="207"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="232"/>
+        <location filename="../src/window/MainWindow.ui" line="212"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
@@ -267,6 +266,11 @@
     </message>
     <message>
         <location filename="../src/graphics_scene/AdvanceScene.cpp" line="58"/>
+        <source>minimize</source>
+        <translation>Minimize popup</translation>
+    </message>
+    <message>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="59"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
@@ -275,6 +279,11 @@
     <name>graphics_scene::SimpleScene</name>
     <message>
         <location filename="../src/graphics_scene/SimpleScene.cpp" line="20"/>
+        <source>Minimize</source>
+        <translation>Minimize popup</translation>
+    </message>
+    <message>
+        <location filename="../src/graphics_scene/SimpleScene.cpp" line="21"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
@@ -295,7 +304,7 @@
 <context>
     <name>window::MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.cpp" line="52"/>
+        <location filename="../src/window/MainWindow.cpp" line="53"/>
         <source>Select image</source>
         <translation>Select image</translation>
     </message>
