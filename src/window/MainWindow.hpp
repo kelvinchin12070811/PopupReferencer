@@ -22,6 +22,9 @@ namespace window
 		void popupClosed(window::BasicPopup* popup);
 	protected:
 		void closeEvent(QCloseEvent* ev) override;
+		void dragEnterEvent(QDragEnterEvent* ev) override;
+		void dragLeaveEvent(QDragLeaveEvent* ev) override;
+		void dropEvent(QDropEvent* ev) override;
 	private:
 		void browseLocal();
 		void closeAllPopups();

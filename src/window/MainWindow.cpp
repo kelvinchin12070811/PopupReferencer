@@ -3,8 +3,11 @@
 // License, v. 2.0.If a copy of the MPL was not distributed with this
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
+#include <qevent.h>
 #include <qfiledialog.h>
 #include <qmessagebox.h>
+#include <qmimedata.h>
+#include <qregularexpression.h>
 #include <qstandardpaths.h>
 #include "AdvPopup.hpp"
 #include "MainWindow.hpp"
@@ -46,6 +49,36 @@ namespace window
 				itr->closeOnly();
 		}
 		QMainWindow::closeEvent(ev);
+	}
+
+	void MainWindow::dragEnterEvent(QDragEnterEvent* ev)
+	{
+		if (ev->mimeData()->hasFormat("text/uri-list") || ev->mimeData()->hasFormat("text/plain"))
+			ev->acceptProposedAction();
+	}
+
+	void MainWindow::dragLeaveEvent(QDragLeaveEvent* ev)
+	{
+		
+	}
+
+	void MainWindow::dropEvent(QDropEvent* ev)
+	{
+		auto uri = ev->mimeData()->text();
+		QRegularExpression urlFromUri{ "^((file:///)|(https?://))(.+)$" };
+		auto matchResult = urlFromUri.match(uri);
+		if (matchResult.hasMatch())
+		{
+			auto url = matchResult.captured(4);
+			url = url.replace("%20", " ");
+			if (auto prefix = matchResult.captured(3); !prefix.isEmpty())
+				url = prefix + url;
+
+			ui->urlField->setText(url);
+			ev->acceptProposedAction();
+		}
+		else
+			QMessageBox::information(this, tr("unknow protocal"), tr("protocal not supported"));
 	}
 
 	void MainWindow::browseLocal()
