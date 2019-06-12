@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>resources/images/downloading.svg</file>
     <file>resources/icons/icon.svg</file>
     <file>resources/icons/close_all.svg</file>
     <file>resources/icons/popup.svg</file>

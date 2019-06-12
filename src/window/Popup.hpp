@@ -5,6 +5,7 @@
 //===========================================================================================================
 #pragma once
 #include <functional>
+#include <qnetworkaccessmanager.h>
 #include "BasicPopup.hpp"
 #include "../graphics_scene/SimpleScene.hpp"
 #include "ui_Popup.h"
@@ -31,6 +32,9 @@ namespace window
 		void mouseReleaseEvent(QMouseEvent* ev) override;
 		void resizeEvent(QResizeEvent* ev) override;
 
+		void loadLocal(const QString& url);
+		void loadOnline(const QString& fileName, QNetworkReply* reply);
+
 	protected:
 		bool _closeOnly{ false };
 		bool leftButtonDwn{ false };
@@ -39,6 +43,7 @@ namespace window
 		QPixmap image;
 		QGraphicsPixmapItem* graphicsItm{ nullptr };
 		QPointer<QGraphicsScene> scene;
+		std::unique_ptr<QNetworkAccessManager> networkManager;
 		std::weak_ptr<MainWindow> mainWindow;
 	};
 }

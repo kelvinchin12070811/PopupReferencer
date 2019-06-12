@@ -5,6 +5,9 @@
 //===========================================================================================================
 #include <qevent.h>
 #include <qfileinfo.h>
+#include <qnetworkreply.h>
+#include <qnetworkrequest.h>
+#include <qregularexpression.h>
 #include <qsizegrip.h>
 #include "MainWindow.hpp"
 #include "Popup.hpp"
@@ -13,21 +16,13 @@ namespace window
 {
 	Popup::Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow,
 		std::function<QGraphicsScene*()> sceneCreator, QWidget* parent):
-		image(QPixmap{ url }), mainWindow(mainWindow)
+		mainWindow(mainWindow)
 	{
 		this->setParent(parent);
 		ui = std::make_unique<decltype(ui)::element_type>();
 		ui->setupUi(this);
 		this->setSizeGripEnabled(true);
 
-		QFileInfo info{ url };
-		this->setWindowTitle(info.fileName());
-		this->setWindowIcon(QIcon{ image });
-
-		this->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
-		this->setAttribute(Qt::WA_DeleteOnClose);
-
-		// assign image
 		if (sceneCreator == nullptr)
 		{
 			scene = new graphics_scene::SimpleScene(this, ui->graphicsView);
@@ -36,9 +31,32 @@ namespace window
 		{
 			scene = sceneCreator();
 		}
+
+		this->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+		this->setAttribute(Qt::WA_DeleteOnClose);
+
 		ui->graphicsView->setScene(scene);
 		ui->graphicsView->installEventFilter(this);
-		graphicsItm = scene->addPixmap(image);
+
+		QRegularExpression isOnline{ "^https?://(.+)$" };
+		auto resIsOnline = isOnline.match(url);
+
+		if (resIsOnline.hasMatch())
+		{
+			networkManager = std::make_unique<QNetworkAccessManager>();
+			QNetworkRequest request;
+			connect(networkManager.get(), &QNetworkAccessManager::finished, [url, this](QNetworkReply* _0) {
+				loadOnline(url, _0);
+			});
+			image.load(":resources/images/downloading.svg");
+			graphicsItm = scene->addPixmap(image);
+
+			networkManager->get(QNetworkRequest{ url });
+		}
+		else
+		{
+			loadLocal(url);
+		}
 	}
 
 	void Popup::closeOnly()
@@ -55,11 +73,13 @@ namespace window
 	void Popup::show()
 	{
 		QDialog::show();
-		this->resize(image.size() + QSize{ 6, 6 });
+		if (!image.isNull())
+			this->resize(image.size() + QSize{ 6, 6 });
 	}
 
 	void Popup::fitInView()
 	{
+		if (graphicsItm == nullptr) return;
 		auto rect = graphicsItm->boundingRect();
 		ui->graphicsView->fitInView(rect, Qt::KeepAspectRatio);
 	}
@@ -107,5 +127,30 @@ namespace window
 	{
 		fitInView();
 		QDialog::resizeEvent(ev);
+	}
+	
+	void Popup::loadLocal(const QString& url)
+	{
+		image.load(url);
+		QFileInfo info{ url };
+		this->setWindowTitle(info.fileName());
+		this->setWindowIcon(QIcon{ image });
+		graphicsItm = scene->addPixmap(image);
+	}
+	
+	void Popup::loadOnline(const QString& fileName, QNetworkReply* reply)
+	{
+		reply->deleteLater();
+		if (reply->isReadable())
+		{
+			image.loadFromData(reply->readAll());
+			QFileInfo info{ fileName };
+			this->setWindowTitle(info.fileName());
+			this->setWindowIcon(QIcon{ image });
+			scene->removeItem(graphicsItm);
+			delete graphicsItm;
+			graphicsItm = scene->addPixmap(image);
+			this->resize(image.size() + QSize{ 14, 14 });
+		}
 	}
 }

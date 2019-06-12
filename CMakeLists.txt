@@ -11,7 +11,7 @@ project(PopupReferencer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 #find Qt5 and required components
-find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets Svg LinguistTools)
+find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets Svg LinguistTools Network)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add project source files here
@@ -62,6 +62,7 @@ target_link_libraries(PopupReferencer
 	Qt5::Gui
 	Qt5::Widgets
 	Qt5::Svg
+	Qt5::Network
 	)
 
 if(WIN32)
@@ -70,5 +71,6 @@ if(WIN32)
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt5::Gui> $<TARGET_FILE_DIR:${PROJECT_NAME}>
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt5::Widgets> $<TARGET_FILE_DIR:${PROJECT_NAME}>
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt5::Svg> $<TARGET_FILE_DIR:${PROJECT_NAME}>
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt5::Network> $<TARGET_FILE_DIR:${PROJECT_NAME}>
 	)
 endif(WIN32)
