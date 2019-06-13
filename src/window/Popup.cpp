@@ -74,7 +74,10 @@ namespace window
 	{
 		QDialog::show();
 		if (!image.isNull())
-			this->resize(image.size() + QSize{ 6, 6 });
+		{
+			this->resize(401, 401);
+			this->resize(400, 400);
+		}
 	}
 
 	void Popup::fitInView()
@@ -150,7 +153,9 @@ namespace window
 			scene->removeItem(graphicsItm);
 			delete graphicsItm;
 			graphicsItm = scene->addPixmap(image);
-			this->resize(image.size() + QSize{ 14, 14 });
+			
+			this->hide();
+			this->show();
 		}
 	}
 }

@@ -22,9 +22,8 @@ namespace window
 
 	void AdvPopup::show()
 	{
-		int szPadding = 14;
-		this->resize(image.size() + QSize{ szPadding, szPadding });
 		QDialog::show();
+		this->resize(400, 400);
 	}
 
 	void AdvPopup::resizeEvent(QResizeEvent* ev)

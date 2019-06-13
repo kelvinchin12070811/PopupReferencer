@@ -39,11 +39,9 @@ namespace graphics_scene
 		void resetAll();
 
 	private:
-		bool midButtonDown{ false };
 		bool isHFlip{ false };
 		bool isVFlip{ false };
 		qreal rotation{ 0 };
-		QPointF musLastPos;
 		QGraphicsView* view{ nullptr };
 		std::list<QGraphicsLineItem*> gridItm;
 	};

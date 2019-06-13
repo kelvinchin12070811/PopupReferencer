@@ -55,7 +55,7 @@ QScrollBar::sub-line {
 }
 
 window--Popup QGraphicsView {
-	border: 2px solid blue;
+	border: 5px solid blue;
 }
 
 window--AdvPopup QGraphicsView {

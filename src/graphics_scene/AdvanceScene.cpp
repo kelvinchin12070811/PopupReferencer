@@ -92,43 +92,16 @@ namespace graphics_scene
 	void AdvanceScene::mousePressEvent(QGraphicsSceneMouseEvent* ev)
 	{
 		SimpleScene::mousePressEvent(ev);
-
-		if (ev->button() == Qt::MouseButton::MiddleButton)
-		{
-			host->setCursor(Qt::CursorShape::ClosedHandCursor);
-			midButtonDown = true;
-			musLastPos = ev->scenePos();
-		}
 	}
 
 	void AdvanceScene::mouseMoveEvent(QGraphicsSceneMouseEvent* ev)
 	{
 		SimpleScene::mouseMoveEvent(ev);
-		if (midButtonDown)
-		{
-			auto musCurPos = ev->scenePos();
-
-			auto hScrollBar = view->horizontalScrollBar();
-			auto vScrollBar = view->verticalScrollBar();
-
-			hScrollBar->setValue(hScrollBar->value() - static_cast<int>(musCurPos.x() - musLastPos.x()));
-			vScrollBar->setValue(vScrollBar->value() - static_cast<int>(musCurPos.y() - musLastPos.y()));
-
-			ev->accept();
-			return;
-		}
 	}
 
 	void AdvanceScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* ev)
 	{
 		SimpleScene::mouseReleaseEvent(ev);
-
-		if (ev->button() == Qt::MouseButton::MiddleButton)
-		{
-			if (host->cursor() == Qt::CursorShape::ClosedHandCursor)
-				host->setCursor(Qt::CursorShape::ArrowCursor);
-			midButtonDown = false;
-		}
 	}
 
 	void AdvanceScene::setGrid()
