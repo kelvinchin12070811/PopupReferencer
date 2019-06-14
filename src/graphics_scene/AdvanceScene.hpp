@@ -22,9 +22,7 @@ namespace graphics_scene
 
 	protected:
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent* ev) override;
-		void mousePressEvent(QGraphicsSceneMouseEvent* ev) override;
-		void mouseMoveEvent(QGraphicsSceneMouseEvent* ev) override;
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent* ev) override;
+		void wheelEvent(QGraphicsSceneWheelEvent* ev) override;
 
 	private:
 		void setGrid();
@@ -41,8 +39,12 @@ namespace graphics_scene
 	private:
 		bool isHFlip{ false };
 		bool isVFlip{ false };
+		QPointF musLastPos;
 		qreal rotation{ 0 };
+		qreal rotateSpeed{ 1.0 };
+		qreal zoomSpeed{ 2.0 };
 		QGraphicsView* view{ nullptr };
 		std::list<QGraphicsLineItem*> gridItm;
+		int count{ 0 };
 	};
 }

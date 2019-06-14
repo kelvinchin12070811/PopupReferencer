@@ -4,6 +4,7 @@
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
 #include <qaction.h>
+#include <qevent.h>
 #include <qgraphicssceneevent.h>
 #include <qmenu.h>
 #include <qpen.h>
@@ -88,20 +89,45 @@ namespace graphics_scene
 
 		menu->exec(ev->screenPos());
 	}
-
-	void AdvanceScene::mousePressEvent(QGraphicsSceneMouseEvent* ev)
+	
+	void AdvanceScene::wheelEvent(QGraphicsSceneWheelEvent* ev)
 	{
-		SimpleScene::mousePressEvent(ev);
-	}
+		auto delWheel = ev->delta();
 
-	void AdvanceScene::mouseMoveEvent(QGraphicsSceneMouseEvent* ev)
-	{
-		SimpleScene::mouseMoveEvent(ev);
-	}
+		if (delWheel > 0)
+		{
+			if (ev->modifiers() & Qt::KeyboardModifier::ControlModifier)
+			{
+				zoom(zoomSpeed);
+				ev->accept();
+			}
+			else if (ev->modifiers() & Qt::KeyboardModifier::ShiftModifier)
+			{
+				if (ev->modifiers() & Qt::KeyboardModifier::AltModifier)
+					rotate(rotateSpeed * 2);
+				else
+					rotate(rotateSpeed);
 
-	void AdvanceScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* ev)
-	{
-		SimpleScene::mouseReleaseEvent(ev);
+				ev->accept();
+			}
+		}
+		else if (delWheel < 0)
+		{
+			if (ev->modifiers() & Qt::KeyboardModifier::ControlModifier)
+			{
+				zoom(1.0 / zoomSpeed);
+				ev->accept();
+			}
+			else if (ev->modifiers() & Qt::KeyboardModifier::ShiftModifier)
+			{
+				if (ev->modifiers() & Qt::KeyboardModifier::AltModifier)
+					rotate(-(rotateSpeed * 2));
+				else
+					rotate(-rotateSpeed);
+
+				ev->accept();
+			}
+		}
 	}
 
 	void AdvanceScene::setGrid()
@@ -185,6 +211,7 @@ namespace graphics_scene
 
 	void AdvanceScene::zoom(qreal delta)
 	{
+		count++;
 		view->scale(delta, delta);
 	}
 	
