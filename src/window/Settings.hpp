@@ -27,6 +27,6 @@ namespace window
 
 	private:
 		std::unique_ptr<Ui::Settings> ui;
-		QStringList langs;
+		std::vector<std::pair<QString, QString>> langList;
 	};
 }

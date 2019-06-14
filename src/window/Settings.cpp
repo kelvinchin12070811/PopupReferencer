@@ -3,10 +3,12 @@
 // License, v. 2.0.If a copy of the MPL was not distributed with this
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
+#include <algorithm>
 #include <qdir.h>
 #include <qfile.h>
 #include <qmessagebox.h>
-#include <regex>
+#include <qregularexpression.h>
+#include <qtextstream.h>
 #include "Settings.hpp"
 #include "ui_Settings.h"
 #include "../ConfigMng.hpp"
@@ -36,26 +38,38 @@ namespace window
 	void Settings::initSettings()
 	{
 		auto cfg = ConfigMng::getInstance();
-	
+
 		//display.high_dpi_scaling
 		ui->optHighDpi->setChecked(cfg->get("display.high_dpi_scaling").toBool());
 
 		//system.lang
-		QDir dirLangs{ "langs" };
-		auto files = dirLangs.entryList();
-		for (auto&& itr : files)
+		QFile in{ "langs/catalogue.csv" };
+		in.open(QIODevice::ReadOnly);
+		if (!in.isOpen())
+			throw std::runtime_error("Unable to load language catalogue");
+
+		QTextStream stream{ &in };
+		stream.setCodec("UTF-8");
+
+		QRegularExpression verifCsvLine{ "^(.+), ?(.+)$" };
+		while (!stream.atEnd())
 		{
-			std::string filename = itr.toStdString();
-			std::smatch result;
-			std::regex regex{ "(.*).qm" };
-			if (std::regex_match(filename, result, regex))
+			auto csvLine = stream.readLine();
+			if (auto result = verifCsvLine.match(csvLine); result.isValid())
 			{
-				langs.push_back(QString::fromStdString(result[1]));
+				langList.push_back({ result.captured(1), result.captured(2) });
+				ui->langsList->addItem(langList.back().second);
 			}
 		}
 
-		ui->langsList->addItems(langs);
-		ui->langsList->setCurrentIndex(langs.indexOf(cfg->get("system.lang").toString()));
+		auto result = std::find_if(langList.begin(), langList.end(),
+			[&](decltype(langList)::const_reference itr) {
+				return itr.first == cfg->get("system.lang").toString();
+			});
+
+		ui->langsList->setCurrentIndex(result == langList.end() ?
+			0 :
+			std::distance(langList.begin(), result));
 	}
 
 	void Settings::connectObjects()
@@ -69,7 +83,7 @@ namespace window
 		auto cfg = ConfigMng::getInstance();
 
 		cfg->set("display.high_dpi_scaling", ui->optHighDpi->isChecked());
-		cfg->set("system.lang", langs[ui->langsList->currentIndex()]);
+		cfg->set("system.lang", langList[ui->langsList->currentIndex()].first);
 
 		cfg->syncConfigs();
 		QMessageBox::information(this, tr("saved"), tr("save message"));

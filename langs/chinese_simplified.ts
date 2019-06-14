@@ -37,12 +37,12 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="14"/>
+        <location filename="../src/window/MainWindow.ui" line="17"/>
         <source>MainWindow</source>
         <translation>Popup Referencer</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="29"/>
+        <location filename="../src/window/MainWindow.ui" line="32"/>
         <source>Image URL</source>
         <translation>参考图片地址</translation>
     </message>
@@ -55,7 +55,7 @@
         <translation type="vanished">浏览在线文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="49"/>
+        <location filename="../src/window/MainWindow.ui" line="55"/>
         <source>load from loacal</source>
         <translation>浏览本地图片</translation>
     </message>
@@ -76,52 +76,52 @@
         <translation type="vanished">关闭所有窗口</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="102"/>
+        <location filename="../src/window/MainWindow.ui" line="108"/>
         <source>show in simple viewer</source>
         <translation>使用基本弹窗打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="122"/>
+        <location filename="../src/window/MainWindow.ui" line="128"/>
         <source>show in adv viewer</source>
         <translation>使用进阶弹窗打开</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="142"/>
+        <location filename="../src/window/MainWindow.ui" line="148"/>
         <source>close all popups</source>
         <translation>关闭所有弹窗</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="174"/>
+        <location filename="../src/window/MainWindow.ui" line="180"/>
         <source>File</source>
         <translation>(&amp;F)文件</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="181"/>
+        <location filename="../src/window/MainWindow.ui" line="187"/>
         <source>Help</source>
         <translation>(&amp;H)帮助</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="192"/>
+        <location filename="../src/window/MainWindow.ui" line="198"/>
         <source>Close</source>
         <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="197"/>
+        <location filename="../src/window/MainWindow.ui" line="203"/>
         <source>Manual</source>
         <translation>使用手册</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="202"/>
+        <location filename="../src/window/MainWindow.ui" line="208"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="207"/>
+        <location filename="../src/window/MainWindow.ui" line="213"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../src/window/MainWindow.ui" line="212"/>
+        <location filename="../src/window/MainWindow.ui" line="218"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -165,112 +165,112 @@
 <context>
     <name>graphics_scene::AdvanceScene</name>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="28"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="29"/>
         <source>zoom</source>
         <translation>放大/缩小</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="29"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="30"/>
         <source>zoomIn</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="30"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="31"/>
         <source>zoomOut</source>
         <translation>缩小</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="31"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="32"/>
         <source>resetZoom</source>
         <translation>重置</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="32"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="33"/>
         <source>Fit in view</source>
         <translation>适应当前弹窗大小</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="35"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="36"/>
         <source>rotate</source>
         <translation>旋转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="36"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="37"/>
         <source>rotateLeft</source>
         <translation>向左旋转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="37"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="38"/>
         <source>rotateRight</source>
         <translation>向右旋转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="38"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="39"/>
         <source>resetRotation</source>
         <translation>重置</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="40"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="41"/>
         <source>rotate90DegLeft</source>
         <translation>向左旋转90°</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="41"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="42"/>
         <source>rotate90DegRight</source>
         <translation>向右旋转90°</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="42"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="43"/>
         <source>rotate180Deg</source>
         <translation>旋转180°</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="45"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="46"/>
         <source>grid</source>
         <translation>参考线</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="46"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="47"/>
         <source>addGrid</source>
         <translation>添加参考线</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="47"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="48"/>
         <source>clearGrid</source>
         <translation>清除参考线</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="50"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="51"/>
         <source>flip</source>
         <translation>翻转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="51"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="52"/>
         <source>flipHorizontal</source>
         <translation>水平翻转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="52"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="53"/>
         <source>flipVertical</source>
         <translation>垂直翻转</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="53"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="54"/>
         <source>resetFlip</source>
         <translation>重置</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="57"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="58"/>
         <source>ResetAll</source>
         <translation>重置画布</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="58"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="59"/>
         <source>minimize</source>
         <translation>最小化弹窗</translation>
     </message>
     <message>
-        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="59"/>
+        <location filename="../src/graphics_scene/AdvanceScene.cpp" line="60"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
@@ -304,7 +304,17 @@
 <context>
     <name>window::MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.cpp" line="53"/>
+        <location filename="../src/window/MainWindow.cpp" line="81"/>
+        <source>unknow protocal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.cpp" line="81"/>
+        <source>protocal not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.cpp" line="86"/>
         <source>Select image</source>
         <translation>选择图片</translation>
     </message>
