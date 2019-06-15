@@ -1,0 +1,31 @@
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+ICON ICON "ICON.ico"
+
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEOS 0x40004
+FILETYPE 0x1
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904B0"
+	{
+		VALUE "FileDescription", "Popup Referencer utility"
+		VALUE "InternalName", "PopupReferencer"
+		VALUE "OriginalFilename", "PopupReferencer.exe"
+		VALUE "CompanyName", "Kelvin's Application Laboratory"
+		VALUE "LegalCopyright", "©Kelvin Chin 2019, Licensed under MPL 2.0"
+		VALUE "ProductName", "Popup Referencer"
+		VALUE "FileVersion", "1.0.0.0"
+		VALUE "ProductVersion", "1.0.0.0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0  
+}
+}

@@ -55,7 +55,6 @@ qt5_add_resources(qrc_sources resources.qrc)
 
 add_executable(PopupReferencer WIN32 ${project_sources} ${project_headers} ${ui_wrap}
 	${moc_sources} ${qrc_sources})
-
 set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 target_link_libraries(PopupReferencer
 	Qt5::Core
