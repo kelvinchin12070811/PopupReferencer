@@ -20,6 +20,7 @@ set(project_sources
 	src/graphics_scene/AdvanceScene.cpp
 	src/graphics_scene/SimpleScene.cpp
 	src/Main.cpp
+	src/window/About.cpp
 	src/window/AdvPopup.cpp
 	src/window/GridCreator.cpp
 	src/window/MainWindow.cpp
@@ -32,6 +33,7 @@ set(project_headers
 	src/ConfigMng.hpp
 	src/graphics_scene/AdvanceScene.hpp
 	src/graphics_scene/SimpleScene.hpp
+	src/window/About.hpp
 	src/window/AdvPopup.hpp
 	src/window/BasicPopup.hpp
 	src/window/GridCreator.hpp
@@ -42,6 +44,7 @@ set(project_headers
 
 # add project ui files here
 set(project_ui
+	src/window/About.ui
 	src/window/GridCreator.ui
 	src/window/MainWindow.ui
 	src/window/Popup.ui

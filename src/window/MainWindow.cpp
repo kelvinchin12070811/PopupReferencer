@@ -9,6 +9,7 @@
 #include <qmimedata.h>
 #include <qregularexpression.h>
 #include <qstandardpaths.h>
+#include "About.hpp"
 #include "AdvPopup.hpp"
 #include "MainWindow.hpp"
 #include "Settings.hpp"
@@ -108,6 +109,10 @@ namespace window
 	
 	void MainWindow::connectWidgets()
 	{
+		connect(ui->actionAbout, &QAction::triggered, []() {
+			auto winAbout = std::make_unique<About>();
+			winAbout->exec();
+		});
 		connect(ui->actionAbout_Qt, &QAction::triggered, [this]() { QMessageBox::aboutQt(this); });
 		connect(ui->actionClose, &QAction::triggered, this, &MainWindow::close);
 		connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::openSettings);
