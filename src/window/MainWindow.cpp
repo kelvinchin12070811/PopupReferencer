@@ -3,6 +3,7 @@
 // License, v. 2.0.If a copy of the MPL was not distributed with this
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
+#include <qdesktopservices.h>
 #include <qevent.h>
 #include <qfiledialog.h>
 #include <qmessagebox.h>
@@ -109,12 +110,17 @@ namespace window
 	
 	void MainWindow::connectWidgets()
 	{
-		connect(ui->actionAbout, &QAction::triggered, []() {
-			auto winAbout = std::make_unique<About>();
+		connect(ui->actionAbout, &QAction::triggered, [this]() {
+			auto winAbout = std::make_unique<About>(this);
 			winAbout->exec();
 		});
 		connect(ui->actionAbout_Qt, &QAction::triggered, [this]() { QMessageBox::aboutQt(this); });
 		connect(ui->actionClose, &QAction::triggered, this, &MainWindow::close);
+		connect(ui->actionManual, &QAction::triggered, []() {
+			QDesktopServices::openUrl(QUrl{
+				"https://github.com/kelvinchin12070811/PopupReferencer/wiki/Manual"
+			});
+		});
 		connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::openSettings);
 		connect(ui->browseLocalBtn, &QPushButton::clicked, this, &MainWindow::browseLocal);
 		connect(ui->closeAllPopupsBtn, &QPushButton::clicked, this, &MainWindow::closeAllPopups);

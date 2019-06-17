@@ -39,11 +39,12 @@ namespace window
 		bool _closeOnly{ false };
 		bool leftButtonDwn{ false };
 		QPoint cursorOffset;
-		std::unique_ptr<Ui::Popup> ui;
 		QPixmap image;
 		QGraphicsPixmapItem* graphicsItm{ nullptr };
 		QPointer<QGraphicsScene> scene;
+		std::function<QGraphicsScene* ()> sceneCreator;
 		std::unique_ptr<QNetworkAccessManager> networkManager;
+		std::unique_ptr<Ui::Popup> ui;
 		std::weak_ptr<MainWindow> mainWindow;
 	};
 }

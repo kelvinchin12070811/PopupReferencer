@@ -5,6 +5,7 @@
 //===========================================================================================================
 #include <qevent.h>
 #include <qfileinfo.h>
+#include <qmessagebox.h>
 #include <qnetworkreply.h>
 #include <qnetworkrequest.h>
 #include <qregularexpression.h>
@@ -16,21 +17,20 @@ namespace window
 {
 	Popup::Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow,
 		std::function<QGraphicsScene*()> sceneCreator, QWidget* parent):
-		mainWindow(mainWindow)
+		sceneCreator(sceneCreator), mainWindow(mainWindow)
 	{
 		this->setParent(parent);
 		ui = std::make_unique<decltype(ui)::element_type>();
 		ui->setupUi(this);
 		this->setSizeGripEnabled(true);
 
-		if (sceneCreator == nullptr)
+		if (this->sceneCreator == nullptr)
 		{
-			scene = new graphics_scene::SimpleScene(this, ui->graphicsView);
+			this->sceneCreator = [&, this]() {
+				return new graphics_scene::SimpleScene(this, ui->graphicsView);
+			};
 		}
-		else
-		{
-			scene = sceneCreator();
-		}
+		scene = this->sceneCreator();
 
 		this->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
 		this->setAttribute(Qt::WA_DeleteOnClose);
@@ -38,20 +38,30 @@ namespace window
 		ui->graphicsView->setScene(scene);
 		ui->graphicsView->installEventFilter(this);
 
-		QRegularExpression isOnline{ "^https?://(.+)$" };
+		QRegularExpression isOnline{ "^(https?)://(.+)$" };
 		auto resIsOnline = isOnline.match(url);
 
 		if (resIsOnline.hasMatch())
 		{
 			networkManager = std::make_unique<QNetworkAccessManager>();
-			QNetworkRequest request;
+
+			QNetworkRequest request{ url };
+
+			if (resIsOnline.captured(1) == "https")
+			{
+				auto cfg = request.sslConfiguration();
+				cfg.setPeerVerifyMode(QSslSocket::PeerVerifyMode::VerifyNone);
+				cfg.setProtocol(QSsl::TlsV1SslV3);
+				request.setSslConfiguration(cfg);
+			}
+
 			connect(networkManager.get(), &QNetworkAccessManager::finished, [url, this](QNetworkReply* _0) {
 				loadOnline(url, _0);
 			});
 			image.load(":resources/images/downloading.svg");
 			graphicsItm = scene->addPixmap(image);
 
-			networkManager->get(QNetworkRequest{ url });
+			networkManager->get(request);
 		}
 		else
 		{
@@ -144,18 +154,28 @@ namespace window
 	void Popup::loadOnline(const QString& fileName, QNetworkReply* reply)
 	{
 		reply->deleteLater();
-		if (reply->isReadable())
+		if (reply->error())
 		{
-			image.loadFromData(reply->readAll());
-			QFileInfo info{ fileName };
-			this->setWindowTitle(info.fileName());
-			this->setWindowIcon(QIcon{ image });
-			scene->removeItem(graphicsItm);
-			delete graphicsItm;
-			graphicsItm = scene->addPixmap(image);
-			
-			this->hide();
-			this->show();
+			QMessageBox::information(this, "HTTP Get Request Error", reply->errorString());
+			this->close();
+			return;
 		}
+
+		image.loadFromData(reply->readAll());
+		QFileInfo info{ fileName };
+		this->setWindowTitle(info.fileName());
+		this->setWindowIcon(QIcon{ image });
+		scene->removeItem(graphicsItm);
+
+		ui->graphicsView->setScene(nullptr);
+		delete graphicsItm;
+		delete scene;
+
+		scene = sceneCreator();
+		ui->graphicsView->setScene(scene);
+		graphicsItm = scene->addPixmap(image);
+
+		this->hide();
+		this->show();
 	}
 }
