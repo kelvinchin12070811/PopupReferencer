@@ -5,13 +5,12 @@
 //===========================================================================================================
 #include <qevent.h>
 #include "AdvPopup.hpp"
-#include "MainWindow.hpp"
 #include "../graphics_scene/AdvanceScene.hpp"
 
 namespace window
 {
-	AdvPopup::AdvPopup(const QString& url, std::weak_ptr<MainWindow> mainWindow) :
-		Popup(url, mainWindow, [&]() { return sceneCreatorFunc(); })
+	AdvPopup::AdvPopup(const QString& url) :
+		Popup(url, [&]() { return sceneCreatorFunc(); })
 	{
 	}
 	

@@ -35,7 +35,6 @@ set(project_headers
 	src/graphics_scene/SimpleScene.hpp
 	src/window/About.hpp
 	src/window/AdvPopup.hpp
-	src/window/BasicPopup.hpp
 	src/window/GridCreator.hpp
 	src/window/MainWindow.hpp
 	src/window/Popup.hpp

@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 		}
 		app.installTranslator(translator.get());
 
-		auto w = std::make_shared<window::MainWindow>();
+		auto w = std::make_unique<window::MainWindow>();
 		w->show();
 
 		return app.exec();

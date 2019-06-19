@@ -12,12 +12,11 @@
 
 namespace window
 {
-	class MainWindow;
 	class AdvPopup : public Popup
 	{
 		Q_OBJECT
 	public:
-		AdvPopup(const QString& url, std::weak_ptr<MainWindow> mainWindow);
+		AdvPopup(const QString& url);
 		QGraphicsScene* sceneCreatorFunc();
 		void show() override;
 

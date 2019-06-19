@@ -8,18 +8,20 @@
 #include <qmainwindow.h>
 #include <set>
 #include <vector>
-#include "BasicPopup.hpp"
+#include "AdvPopup.hpp"
 #include "ui_MainWindow.h"
 
 namespace window
 {
-	class MainWindow : public QMainWindow, public std::enable_shared_from_this<MainWindow>
+	class MainWindow : public QMainWindow
 	{
 		Q_OBJECT
 	public:
 		MainWindow(QWidget* parent = nullptr);
 
-		void popupClosed(window::BasicPopup* popup);
+	private slots:
+		void popupClosed(window::Popup* popup);
+
 	protected:
 		void closeEvent(QCloseEvent* ev) override;
 		void dragEnterEvent(QDragEnterEvent* ev) override;
@@ -34,7 +36,7 @@ namespace window
 		void popupImageEx();
 	private:
 		std::unique_ptr<Ui::MainWindow> ui;
-		std::set<QPointer<BasicPopup>> popups;
+		std::set<Popup*> popups;
 		const static std::vector<QString> supportedFiles;
 	};
 }

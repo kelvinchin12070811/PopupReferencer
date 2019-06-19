@@ -5,19 +5,18 @@
 //===========================================================================================================
 #include <qevent.h>
 #include <qfileinfo.h>
+#include <qicon.h>
 #include <qmessagebox.h>
 #include <qnetworkreply.h>
 #include <qnetworkrequest.h>
 #include <qregularexpression.h>
 #include <qsizegrip.h>
-#include "MainWindow.hpp"
 #include "Popup.hpp"
 
 namespace window
 {
-	Popup::Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow,
-		std::function<QGraphicsScene*()> sceneCreator, QWidget* parent):
-		sceneCreator(sceneCreator), mainWindow(mainWindow)
+	Popup::Popup(const QString& url, std::function<QGraphicsScene*()> sceneCreator, QWidget* parent):
+		sceneCreator(sceneCreator)
 	{
 		this->setParent(parent);
 		ui = std::make_unique<decltype(ui)::element_type>();
@@ -69,12 +68,6 @@ namespace window
 		}
 	}
 
-	void Popup::closeOnly()
-	{
-		_closeOnly = true;
-		close();
-	}
-
 	bool Popup::eventFilter(QObject* object, QEvent* ev)
 	{
 		return QDialog::eventFilter(object, ev);
@@ -105,11 +98,7 @@ namespace window
 	void Popup::closeEvent(QCloseEvent* ev)
 	{
 		QDialog::closeEvent(ev);
-		if (!mainWindow.expired() && !_closeOnly)
-		{
-			auto ptr = mainWindow.lock();
-			ptr->popupClosed(this);
-		}
+		emit Closed(this);
 	}
 
 	void Popup::mousePressEvent(QMouseEvent* ev)

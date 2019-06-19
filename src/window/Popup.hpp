@@ -5,25 +5,28 @@
 //===========================================================================================================
 #pragma once
 #include <functional>
+#include <qdialog.h>
+#include <qgraphicsitem.h>
 #include <qnetworkaccessmanager.h>
-#include "BasicPopup.hpp"
+#include <qpixmap.h>
 #include "../graphics_scene/SimpleScene.hpp"
 #include "ui_Popup.h"
 
 namespace window
 {
-	class MainWindow;
-	class Popup : public BasicPopup
+	class Popup : public QDialog
 	{
 		Q_OBJECT
 	public:
-		Popup(const QString& url, std::weak_ptr<MainWindow> mainWindow ,
-			std::function<QGraphicsScene*()> sceneCreator = nullptr, QWidget* parent = nullptr);
-		void closeOnly() override;
+		Popup(const QString& url, std::function<QGraphicsScene*()> sceneCreator = nullptr,
+			QWidget* parent = nullptr);
 		bool eventFilter(QObject* object, QEvent* ev) override;
 		virtual void show();
 		void fitInView();
 		const QPixmap& getPixmap();
+
+	signals:
+		void Closed(Popup*);
 
 	protected:
 		void closeEvent(QCloseEvent* ev) override;
@@ -36,7 +39,6 @@ namespace window
 		void loadOnline(const QString& fileName, QNetworkReply* reply);
 
 	protected:
-		bool _closeOnly{ false };
 		bool leftButtonDwn{ false };
 		QPoint cursorOffset;
 		QPixmap image;
@@ -45,6 +47,5 @@ namespace window
 		std::function<QGraphicsScene* ()> sceneCreator;
 		std::unique_ptr<QNetworkAccessManager> networkManager;
 		std::unique_ptr<Ui::Popup> ui;
-		std::weak_ptr<MainWindow> mainWindow;
 	};
 }

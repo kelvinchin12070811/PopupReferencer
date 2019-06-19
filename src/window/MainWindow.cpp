@@ -11,7 +11,6 @@
 #include <qregularexpression.h>
 #include <qstandardpaths.h>
 #include "About.hpp"
-#include "AdvPopup.hpp"
 #include "MainWindow.hpp"
 #include "Settings.hpp"
 
@@ -32,11 +31,9 @@ namespace window
 		connectWidgets();
 	}
 	
-	void MainWindow::popupClosed(window::BasicPopup* popup)
+	void MainWindow::popupClosed(window::Popup* popup)
 	{
-		auto result = std::find_if(popups.begin(), popups.end(), [&](decltype(popups)::const_reference itr) {
-			return itr.data() == popup;
-		});
+		auto result = std::find(popups.begin(), popups.end(), popup);
 		if (result != popups.end())
 		{
 			popups.erase(result);
@@ -45,11 +42,7 @@ namespace window
 
 	void MainWindow::closeEvent(QCloseEvent* ev)
 	{
-		for (auto&& itr : popups)
-		{
-			if (itr->isVisible())
-				itr->closeOnly();
-		}
+		closeAllPopups();
 		QMainWindow::closeEvent(ev);
 	}
 
@@ -100,10 +93,13 @@ namespace window
 
 	void MainWindow::closeAllPopups()
 	{
-		for (auto&& itr : popups)
+		for (auto itr : popups)
 		{
 			if (itr != nullptr)
-				itr->closeOnly();
+			{
+				disconnect(itr, &Popup::Closed, this, &MainWindow::popupClosed);
+				itr->close();
+			}
 		}
 		popups.clear();
 	}
@@ -139,9 +135,9 @@ namespace window
 		QString url{ ui->urlField->text() };
 		if (url.isEmpty()) return;
 
-		auto popup = new Popup(url, this->shared_from_this());
+		auto popup = new Popup(url);
+		connect(popup, &Popup::Closed, this, &MainWindow::popupClosed);
 		popup->show();
-		
 		popups.insert(popup);
 	}
 	
@@ -150,8 +146,8 @@ namespace window
 		QString url{ ui->urlField->text() };
 		if (url.isEmpty()) return;
 
-		auto popup = new AdvPopup(url, this->shared_from_this());
-
+		auto popup = new AdvPopup(url);
+		auto connection = connect(popup, &Popup::Closed, this, &MainWindow::popupClosed);
 		popup->show();
 		popups.insert(popup);
 	}
