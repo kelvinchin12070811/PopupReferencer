@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 
 		auto translator = std::make_unique<QTranslator>();
 		QString langFile = "langs/%1.qm";
-		langFile = langFile.arg(QString::fromStdString(cfg->get<std::string>("system.lang")));
+		langFile = langFile.arg(cfg->get<QString>("system.lang"));
 		if (!translator->load(langFile))
 		{
 			throw std::runtime_error{ "could not load language file:" + langFile.toStdString() };

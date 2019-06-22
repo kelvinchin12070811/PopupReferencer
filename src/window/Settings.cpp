@@ -64,7 +64,7 @@ namespace window
 
 		auto result = std::find_if(langList.begin(), langList.end(),
 			[&](decltype(langList)::const_reference itr) {
-				return itr.first == QString::fromStdString(cfg->get<std::string>("system.lang"));
+				return itr.first == cfg->get<QString>("system.lang");
 			});
 
 		ui->langsList->setCurrentIndex(result == langList.end() ?
@@ -83,7 +83,7 @@ namespace window
 		auto cfg = ConfigMng::getInstance();
 
 		cfg->set("display.high_dpi_scaling", ui->optHighDpi->isChecked());
-		cfg->set("system.lang", langList[ui->langsList->currentIndex()].first.toStdString());
+		cfg->set("system.lang", langList[ui->langsList->currentIndex()].first);
 
 		cfg->syncConfigs();
 		QMessageBox::information(this, tr("saved"), tr("save message"));

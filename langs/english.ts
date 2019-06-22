@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en" sourcelanguage="en">
 <context>
+    <name>About</name>
+    <message>
+        <location filename="../src/window/About.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>About</translation>
+    </message>
+    <message>
+        <location filename="../src/window/About.ui" line="99"/>
+        <source>Ok</source>
+        <translation>Ok</translation>
+    </message>
+</context>
+<context>
     <name>GridCreator</name>
     <message>
         <location filename="../src/window/GridCreator.ui" line="14"/>
@@ -304,17 +317,17 @@
 <context>
     <name>window::MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.cpp" line="81"/>
+        <location filename="../src/window/MainWindow.cpp" line="76"/>
         <source>unknow protocal</source>
-        <translation type="unfinished"></translation>
+        <translation>Unsupported protocal</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.cpp" line="76"/>
+        <source>protocal not supported</source>
+        <translation>The targeted protocal are not supported</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.cpp" line="81"/>
-        <source>protocal not supported</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window/MainWindow.cpp" line="86"/>
         <source>Select image</source>
         <translation>Select image</translation>
     </message>
@@ -322,12 +335,12 @@
 <context>
     <name>window::Settings</name>
     <message>
-        <location filename="../src/window/Settings.cpp" line="75"/>
+        <location filename="../src/window/Settings.cpp" line="89"/>
         <source>saved</source>
         <translation>Settings saved</translation>
     </message>
     <message>
-        <location filename="../src/window/Settings.cpp" line="75"/>
+        <location filename="../src/window/Settings.cpp" line="89"/>
         <source>save message</source>
         <translation>Settings saved, please restart the application to take effect</translation>
     </message>

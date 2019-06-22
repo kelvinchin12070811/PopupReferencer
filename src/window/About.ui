@@ -52,7 +52,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Popup Referenceris an experiment of Kelvin Chin. This little utility help to pin the reference images for an art work on the top most of the screen&lt;/p&gt;&lt;p&gt;This utility is open source and licensed under The Mozilla Public License(MPL) 2.0 and the source code are avaliable at &lt;a href=&quot;https://github.com/kelvinchin12070811/PopupReferencer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Popup Referenceris an experiment of Kelvin Chin. This little utility help to pin the reference images for an art work on the top most of the screen&lt;/p&gt;&lt;p&gt;This utility is open source and licensed under The Mozilla Public License(MPL) 2.0 and the source code are avaliable at &lt;a href=&quot;https://github.com/kelvinchin12070811/PopupReferencer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

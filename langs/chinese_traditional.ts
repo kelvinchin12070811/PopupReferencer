@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_TW" sourcelanguage="en">
 <context>
+    <name>About</name>
+    <message>
+        <location filename="../src/window/About.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>關於</translation>
+    </message>
+    <message>
+        <location filename="../src/window/About.ui" line="99"/>
+        <source>Ok</source>
+        <translation>Ok</translation>
+    </message>
+</context>
+<context>
     <name>GridCreator</name>
     <message>
         <location filename="../src/window/GridCreator.ui" line="14"/>
@@ -284,17 +297,17 @@
 <context>
     <name>window::MainWindow</name>
     <message>
-        <location filename="../src/window/MainWindow.cpp" line="81"/>
+        <location filename="../src/window/MainWindow.cpp" line="76"/>
         <source>unknow protocal</source>
-        <translation type="unfinished"></translation>
+        <translation>未支援協議</translation>
+    </message>
+    <message>
+        <location filename="../src/window/MainWindow.cpp" line="76"/>
+        <source>protocal not supported</source>
+        <translation>暫不支援選定的協議</translation>
     </message>
     <message>
         <location filename="../src/window/MainWindow.cpp" line="81"/>
-        <source>protocal not supported</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window/MainWindow.cpp" line="86"/>
         <source>Select image</source>
         <translation>選擇圖片</translation>
     </message>
@@ -302,12 +315,12 @@
 <context>
     <name>window::Settings</name>
     <message>
-        <location filename="../src/window/Settings.cpp" line="75"/>
+        <location filename="../src/window/Settings.cpp" line="89"/>
         <source>saved</source>
         <translation>保存完成</translation>
     </message>
     <message>
-        <location filename="../src/window/Settings.cpp" line="75"/>
+        <location filename="../src/window/Settings.cpp" line="89"/>
         <source>save message</source>
         <translation>已保存設置，請重新啓動程序使設置生效</translation>
     </message>

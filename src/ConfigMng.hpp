@@ -40,9 +40,21 @@ inline T ConfigMng::get(const std::string& key)
 	return value.get<T>();
 }
 
+template<>
+inline QString ConfigMng::get(const std::string& key)
+{
+	return QString::fromStdString(get<std::string>(key));
+}
+
 template<typename T>
 inline void ConfigMng::set(const std::string& key, const T& value)
 {
 	changed = true;
 	getValue(key) = value;
+}
+
+template<>
+inline void ConfigMng::set(const std::string& key, const QString& value)
+{
+	set(key, value.toStdString());
 }
