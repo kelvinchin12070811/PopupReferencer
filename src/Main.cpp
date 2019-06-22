@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	try
 	{
 		auto cfg = ConfigMng::getInstance();
-		if (cfg->get("display.high_dpi_scaling").toBool())
+		if (cfg->get<bool>("display.high_dpi_scaling"))
 			QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
 		QApplication app{ argc, argv };
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 
 		auto translator = std::make_unique<QTranslator>();
 		QString langFile = "langs/%1.qm";
-		langFile = langFile.arg(cfg->get("system.lang").toString());
+		langFile = langFile.arg(QString::fromStdString(cfg->get<std::string>("system.lang")));
 		if (!translator->load(langFile))
 		{
 			throw std::runtime_error{ "could not load language file:" + langFile.toStdString() };

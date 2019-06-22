@@ -1,5 +1,5 @@
 .vs/*
 CMakeSettings.json
 bin/*
-config.ini
+config.json
 langs/*.qm

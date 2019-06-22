@@ -5,24 +5,46 @@
 //===========================================================================================================
 #pragma once
 #include <map>
-#include <memory>
-#include <qvariant.h>
-#include <qsettings.h>
+#include <any>
+#include "libs/nlohmann/json.hpp"
 
 class ConfigMng
 {
 public:
 	static ConfigMng* getInstance();
 
-	QVariant get(const QString& key);
-	bool has(const QString& key);
+	template <typename T>
+	T get(const std::string& key);
+
+	bool has(const std::string& key);
 	void syncConfigs();
-	void set(const QString& key, const QVariant& value);
+
+	template <typename T>
+	void set(const std::string& key,  const T& value);
 private:
 	ConfigMng();
-	~ConfigMng() = default;
+	~ConfigMng();
 	
 private:
-	std::unique_ptr<QSettings> settings;
-	std::map<QString, QVariant> defValues;
+	bool changed{ false };
+	nlohmann::json settings;
+	nlohmann::json defValues;
 };
+
+template<typename T>
+inline T ConfigMng::get(const std::string& key)
+{
+	auto result = settings[key];
+	if (result.is_null())
+	{
+		return defValues[key].get<T>();
+	}
+	return result.get<T>();
+}
+
+template<typename T>
+inline void ConfigMng::set(const std::string& key, const T& value)
+{
+	changed = true;
+	settings[key] = value;
+}

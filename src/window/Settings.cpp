@@ -40,7 +40,7 @@ namespace window
 		auto cfg = ConfigMng::getInstance();
 
 		//display.high_dpi_scaling
-		ui->optHighDpi->setChecked(cfg->get("display.high_dpi_scaling").toBool());
+		ui->optHighDpi->setChecked(cfg->get<bool>("display.high_dpi_scaling"));
 
 		//system.lang
 		QFile in{ "langs/catalogue.csv" };
@@ -64,7 +64,7 @@ namespace window
 
 		auto result = std::find_if(langList.begin(), langList.end(),
 			[&](decltype(langList)::const_reference itr) {
-				return itr.first == cfg->get("system.lang").toString();
+				return itr.first == QString::fromStdString(cfg->get<std::string>("system.lang"));
 			});
 
 		ui->langsList->setCurrentIndex(result == langList.end() ?
@@ -83,7 +83,7 @@ namespace window
 		auto cfg = ConfigMng::getInstance();
 
 		cfg->set("display.high_dpi_scaling", ui->optHighDpi->isChecked());
-		cfg->set("system.lang", langList[ui->langsList->currentIndex()].first);
+		cfg->set("system.lang", langList[ui->langsList->currentIndex()].first.toStdString());
 
 		cfg->syncConfigs();
 		QMessageBox::information(this, tr("saved"), tr("save message"));

@@ -3,7 +3,9 @@
 // License, v. 2.0.If a copy of the MPL was not distributed with this
 // file, You can obtain one at http ://mozilla.org/MPL/2.0/.
 //===========================================================================================================
+#include <fstream>
 #include <qdebug.h>
+#include <sstream>
 #include "ConfigMng.hpp"
 
 ConfigMng* ConfigMng::getInstance()
@@ -12,44 +14,44 @@ ConfigMng* ConfigMng::getInstance()
 	return &instance;
 }
 
-QVariant ConfigMng::get(const QString& key)
+bool ConfigMng::has(const std::string& key)
 {
-	auto result = settings->value(key);
-	if (result.isNull())
-	{
-		try
-		{
-			return defValues.at(key);
-		}
-		catch (std::exception & e)
-		{
-			return result;
-		}
-	}
-	return result;
-}
-
-bool ConfigMng::has(const QString& key)
-{
-	return settings->contains(key);
+	return settings[key].is_null();
 }
 
 void ConfigMng::syncConfigs()
 {
-	settings->sync();
-}
+	if (!changed) return;
+	
+	std::ofstream output;
+	output.open("config.json", std::ios::out);
+	if (!output.is_open()) throw std::runtime_error{ "can't open config file" };
+	output << settings.dump(4);
+	output.close();
 
-void ConfigMng::set(const QString& key, const QVariant& value)
-{
-	settings->setValue(key, value);
+	changed = false;
 }
 
 ConfigMng::ConfigMng()
 {
-	settings = std::make_unique<QSettings>("config.ini", QSettings::IniFormat);
+	 std::ifstream file;
+	 file.open("config.json", std::ios::in);
+	 if (file.is_open())
+	 {
+		 std::ostringstream buf;
+		 buf << file.rdbuf();
+		 settings = nlohmann::json::parse(buf.str());
 
-	defValues.insert({
-		{ "display.high_dpi_scaling", QVariant{ true } },
-		{ "system.lang", QVariant{ QString{ "english" } } }
-	});
+	 }
+	 file.close();
+
+	defValues = nlohmann::json{
+		{ "display.high_dpi_scaling", true },
+		{ "system.lang", "english" }
+	};
+}
+
+ConfigMng::~ConfigMng()
+{
+	syncConfigs();
 }

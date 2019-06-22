@@ -33,6 +33,7 @@ set(project_headers
 	src/ConfigMng.hpp
 	src/graphics_scene/AdvanceScene.hpp
 	src/graphics_scene/SimpleScene.hpp
+	src/libs/nlohmann/json.hpp
 	src/window/About.hpp
 	src/window/AdvPopup.hpp
 	src/window/GridCreator.hpp
