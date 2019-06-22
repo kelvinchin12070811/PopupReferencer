@@ -5,6 +5,7 @@
 //===========================================================================================================
 #include <fstream>
 #include <qdebug.h>
+#include <qstringlist.h>
 #include <sstream>
 #include "ConfigMng.hpp"
 
@@ -16,7 +17,7 @@ ConfigMng* ConfigMng::getInstance()
 
 bool ConfigMng::has(const std::string& key)
 {
-	return settings[key].is_null();
+	return getValue(key).is_null();
 }
 
 void ConfigMng::syncConfigs()
@@ -43,15 +44,39 @@ ConfigMng::ConfigMng()
 		 settings = nlohmann::json::parse(buf.str());
 
 	 }
-	 file.close();
+	 else
+	 {
+		settings = nlohmann::json::value_type{
+			{ "display", nlohmann::json::value_type{ "high_dpi_scaling", true } },
+			{ "system", nlohmann::json::value_type{ "lang", "english" } }
+		};
 
-	defValues = nlohmann::json{
-		{ "display.high_dpi_scaling", true },
-		{ "system.lang", "english" }
-	};
+		settings = R"({"display": {"high_dpi_scaling": true}, "system": {"lang": "english"}})"_json;
+	 }
+	 file.close();
 }
 
 ConfigMng::~ConfigMng()
 {
 	syncConfigs();
+}
+
+nlohmann::json::value_type& ConfigMng::getValue(const std::string& key)
+{
+	QStringList ids = QString::fromStdString(key).split(".");
+	nlohmann::json::value_type* value{ nullptr };
+
+	for (auto&& itr : ids)
+	{
+		if (value == nullptr)
+		{
+			value = &settings[itr.toStdString()];
+		}
+		else
+		{
+			value = &(*value)[itr.toStdString()];
+		}
+	}
+
+	return *value;
 }

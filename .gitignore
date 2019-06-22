@@ -3,3 +3,4 @@ CMakeSettings.json
 bin/*
 config.json
 langs/*.qm
+.logs

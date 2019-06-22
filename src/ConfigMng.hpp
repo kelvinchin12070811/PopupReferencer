@@ -24,6 +24,8 @@ public:
 private:
 	ConfigMng();
 	~ConfigMng();
+
+	nlohmann::json::value_type& getValue(const std::string& key);
 	
 private:
 	bool changed{ false };
@@ -34,17 +36,13 @@ private:
 template<typename T>
 inline T ConfigMng::get(const std::string& key)
 {
-	auto result = settings[key];
-	if (result.is_null())
-	{
-		return defValues[key].get<T>();
-	}
-	return result.get<T>();
+	auto value = getValue(key);
+	return value.get<T>();
 }
 
 template<typename T>
 inline void ConfigMng::set(const std::string& key, const T& value)
 {
 	changed = true;
-	settings[key] = value;
+	getValue(key) = value;
 }
